@@ -1,5 +1,5 @@
 export enum colorValues {
-  softBlack = '#333333',
+  black = '#333333',
   darkestGray = '#4d4d4d',
   darkGray = '#919191',
   gray = '#b1b1b1',
@@ -14,7 +14,7 @@ export enum colorValues {
   yellow = '#fff35e',
   green = '#74a51e',
   teal = '#46847f',
-  lightBlue = '#9cf3f2',
+  lightBlue = '#77e7e5',
   blue = '#085dfc',
   blueGray = '#93aeb7',
   purple = '#926d8c',
@@ -111,4 +111,4 @@ export const useBlackText = (color?: string) => {
 };
 
 export const bestTextColor = (color?: string) =>
-  useBlackText(color) ? colorValues.softBlack : colorValues.white;
+  useBlackText(color) ? colorValues.black : colorValues.white;
