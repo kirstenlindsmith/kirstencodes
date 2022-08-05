@@ -37,6 +37,8 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js', '.css', '.png'],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'index.html') }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'dist/index.html'),
+    }),
   ],
 };
