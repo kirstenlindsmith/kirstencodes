@@ -1,5 +1,4 @@
 .vscode
-dist/*bundle*
 node_modules
 package-lock.json
 style.css.map
