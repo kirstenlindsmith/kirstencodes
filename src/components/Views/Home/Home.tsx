@@ -16,7 +16,7 @@ const eyeYStart = '1.6rem';
 const eyeMinimum = '0';
 const eyeMaximum = 'calc(100% - 3.1rem)';
 const eyeMedLow = 'calc(100% - 5rem)';
-const eyeMedHigh = 'calc(100% - 3.6rem);';
+const eyeMedHigh = 'calc(100% - 3.6rem)';
 
 const Home = () => {
   const [eyeX, setEyeX] = React.useState(eyeXStart);
@@ -33,31 +33,6 @@ const Home = () => {
     const mouseY = e.pageY;
     const inYMidLine = mouseY > eyeTopBound && mouseY < eyeBottomBound;
     const inXMidLine = mouseX > eyeLeftBound && mouseX < eyeRightBound;
-    console.log(
-      // 'eyeLeftBound:',
-      // eyeLeftBound,
-      // 'eyeRightBound:',
-      // eyeRightBound,
-      // '\n',
-      // 'eyeTopBound:',
-      // eyeTopBound,
-      // 'eyeBottomBound:',
-      // eyeBottomBound,
-      // '\n',
-      'mouseX:',
-      mouseX,
-      'mouseY:',
-      mouseY,
-      '\n',
-      'mouseX - eyeRightBound:',
-      mouseX - eyeRightBound,
-      '\n',
-      'eyeTopBound - mouseY:',
-      eyeTopBound - mouseY,
-      '\n',
-      'mouseY - eyeBottomBound:',
-      mouseY - eyeBottomBound
-    );
 
     //vertical gaze position
     if (mouseY < eyeTopBound) {
@@ -72,7 +47,7 @@ const Home = () => {
       if (mouseY - eyeBottomBound > 100) {
         setEyeY(eyeMaximum);
       } else if (mouseY - eyeBottomBound > 0) {
-        setEyeY(eyeMedHigh);
+        setEyeY(eyeMedHigh); // calc(100% - 3.6rem)
       } else setEyeY(eyeYStart);
     } else if (inYMidLine) setEyeY(eyeYStart);
 
@@ -85,7 +60,7 @@ const Home = () => {
         setEyeX(eyeMedLow);
       } else setEyeX(eyeXStart);
     } else if (mouseX > eyeRightBound) {
-      //if mouse is right of the eye
+      // if mouse is right of the eye
       if (mouseX - eyeRightBound > 100) {
         setEyeX(eyeMaximum);
       } else if (mouseX - eyeRightBound > 0) {

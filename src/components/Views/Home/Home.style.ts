@@ -26,7 +26,7 @@ export const LogoEye = styled.div`
   width: 5.6rem;
   height: 6rem;
   border-radius: 50%;
-  background: ${colorValues.offWhite};
+  background-color: ${colorValues.offWhite};
 `;
 
 export const LogoEyeLidTop = styled.div`
@@ -55,7 +55,7 @@ export const LogoEyeTearDucts = styled.div`
   width: 17%;
   height: 25%;
   border-radius: 50%;
-  background: ${colorValues.blue};
+  background-color: ${colorValues.blue};
 `;
 
 export const LogoPupil = styled.div`
@@ -66,5 +66,6 @@ export const LogoPupil = styled.div`
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
-  background: ${colorValues.black};
+  background-color: ${colorValues.black};
+  transition: all ease-out 100ms;
 `;
