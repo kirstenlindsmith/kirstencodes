@@ -11,14 +11,12 @@ import {
 } from './Home.style';
 import logo from '../../../assets/KirstenCodes.png';
 
-const eyeXStart = '1.35rem';
+const eyeXStart = '1.38rem';
 const eyeYStart = '1.6rem';
 const eyeMinimum = '0';
 const eyeMaximum = 'calc(100% - 3.1rem)';
-const eyeMedTop = 'calc(100% - 5.1rem)';
-const eyeMedBottom = 'calc(100% - 3.7rem);';
-const eyeMedLeft = 'calc(100% - 5rem)';
-const eyeMedRight = 'calc(100% - 3.6rem);';
+const eyeMedLow = 'calc(100% - 5rem)';
+const eyeMedHigh = 'calc(100% - 3.6rem);';
 
 const Home = () => {
   const [eyeX, setEyeX] = React.useState(eyeXStart);
@@ -67,14 +65,14 @@ const Home = () => {
       if (eyeTopBound - mouseY > 100) {
         setEyeY(eyeMinimum);
       } else if (eyeTopBound - mouseY > 0) {
-        setEyeY(eyeMedTop);
+        setEyeY(eyeMedLow);
       } else setEyeY(eyeYStart);
     } else if (mouseY > eyeBottomBound) {
       //if mouse is below the eye
       if (mouseY - eyeBottomBound > 100) {
         setEyeY(eyeMaximum);
       } else if (mouseY - eyeBottomBound > 0) {
-        setEyeY(eyeMedBottom);
+        setEyeY(eyeMedHigh);
       } else setEyeY(eyeYStart);
     } else if (inYMidLine) setEyeY(eyeYStart);
 
@@ -84,14 +82,14 @@ const Home = () => {
       if (eyeLeftBound - mouseX > 100) {
         setEyeX(eyeMinimum);
       } else if (eyeLeftBound - mouseX > 0) {
-        setEyeX(eyeMedLeft);
+        setEyeX(eyeMedLow);
       } else setEyeX(eyeXStart);
     } else if (mouseX > eyeRightBound) {
       //if mouse is right of the eye
       if (mouseX - eyeRightBound > 100) {
         setEyeX(eyeMaximum);
       } else if (mouseX - eyeRightBound > 0) {
-        setEyeX(eyeMedRight);
+        setEyeX(eyeMedHigh);
       } else setEyeX(eyeXStart);
     } else if (inXMidLine) setEyeX(eyeXStart);
   };
