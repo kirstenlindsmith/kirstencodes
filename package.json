@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode=development --open",
     "build": "webpack --mode=production",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "npm run build && aws s3 cp ./dist/ s3://www.kirsten.codes/ --recursive && aws s3 cp ./dist/ s3://kirsten.codes/ --recursive"
   },
   "author": "kelindsmith@gmail.com",
   "license": "ISC",
