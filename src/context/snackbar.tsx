@@ -1,11 +1,10 @@
 import React from 'react';
 
 export const SnackbarContext = React.createContext<{
-  setErrorMessage: (error: string) => void;
-  setSuccessMessage: (message: string) => void;
-  openSnackbar: (payload: { isError: boolean; message: string }) => void;
   errorMessage: string | undefined;
+  setErrorMessage: (error: string) => void;
   successMessage: string | undefined;
+  setSuccessMessage: (message: string) => void;
   genericErrorMessage: () => void;
   clear: () => void;
 } | null>(null);
@@ -15,54 +14,29 @@ export const SnackbarProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [errorMessage, updateErrorMessage] = React.useState<
-    string | undefined
-  >();
-  const [successMessage, updateSuccessMessage] = React.useState<
-    string | undefined
-  >();
-
-  const setErrorMessage = (error: string) => updateErrorMessage(error);
-
-  const setSuccessMessage = (message: string) => updateSuccessMessage(message);
-
-  const clear = () => {
-    updateErrorMessage(undefined);
-    updateSuccessMessage(undefined);
-  };
+  const [errorMessage, setErrorMessage] = React.useState('');
+  const [successMessage, setSuccessMessage] = React.useState('');
 
   const genericErrorMessage = () => {
-    updateErrorMessage(
+    setErrorMessage(
       'Something went wrong! Please refresh and try again. If the issue persists, contact me at kelindsmith@gmail.com'
     );
   };
 
-  const values = React.useMemo(() => {
-    const openSnackbar = ({
-      message,
-      isError,
-    }: {
-      message: string;
-      isError: boolean;
-    }) => {
-      isError ? setErrorMessage(message) : setSuccessMessage(message);
-    };
+  const clear = () => {
+    setErrorMessage(undefined);
+    setSuccessMessage(undefined);
+  };
 
-    return {
-      setErrorMessage,
-      setSuccessMessage,
-      clear,
-      openSnackbar,
-      genericErrorMessage,
-    };
-  }, []);
   return (
     <SnackbarContext.Provider
       value={{
-        ...values,
         errorMessage,
+        setErrorMessage,
         successMessage,
+        setSuccessMessage,
         genericErrorMessage,
+        clear,
       }}
     >
       {children}

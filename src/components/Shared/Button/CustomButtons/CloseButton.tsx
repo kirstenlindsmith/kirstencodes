@@ -23,6 +23,7 @@ const CloseButton = ({
     style={{
       position: 'absolute',
       right: '1rem',
+      top: '1rem',
       minWidth: 0,
       width: '1.75rem',
       height: '1.75rem',

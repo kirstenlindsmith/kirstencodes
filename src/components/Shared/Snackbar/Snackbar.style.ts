@@ -12,24 +12,29 @@ const slideInAnimation = keyframes({
   },
 });
 
-export const StyledSnackbar = styled.div<{ open: boolean }>`
+export const StyledSnackbar = styled.div`
   z-index: 10000;
   position: fixed;
   left: 0.5rem;
   right: 0.5rem;
   top: 0.5rem;
-  display: ${({ open }) => (open ? 'flex' : 'none')};
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-export const SnackbarContent = styled.div<{ error?: boolean }>`
+export const SnackbarContent = styled.div<{
+  error?: boolean;
+}>`
   position: relative;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  word-break: break-word;
+  min-height: 3.75rem;
   max-width: 50%;
-  padding: 0.85rem 5rem 0.85rem 1rem;
+  padding: 1rem 5rem 1rem 1rem;
   border-radius: 0.4rem;
   color: ${colorValues.white};
   background-color: ${({ error }) =>
