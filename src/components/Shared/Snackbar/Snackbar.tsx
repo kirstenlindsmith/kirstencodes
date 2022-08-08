@@ -1,6 +1,7 @@
 import React from 'react';
 import useSnackbar from '../../../hooks/useSnackbar';
 import { CloseButton } from '../Button/CustomButtons';
+import ClickAwayListener from '../ClickAwayListener';
 import { StyledSnackbar, SnackbarContent } from './Snackbar.style';
 import { colorValues } from '../../../helpers/colors';
 
@@ -19,20 +20,22 @@ const Snackbar = () => {
   }, [snackbar?.errorMessage, snackbar?.successMessage]);
 
   const handleClose = () => {
-    snackbar?.clear();
+    snackbar?.clear(); // TODO: animate close
     setOpen(false);
   };
 
   return (
-    <StyledSnackbar open={open}>
-      <SnackbarContent role='alert' error={isError}>
-        <div>{snackbar?.errorMessage || snackbar?.successMessage}</div>
-        <CloseButton
-          onClose={handleClose}
-          backdropColor={isError ? colorValues.orangeRed : colorValues.green}
-        />
-      </SnackbarContent>
-    </StyledSnackbar>
+    <ClickAwayListener onClickAway={handleClose}>
+      <StyledSnackbar open={open}>
+        <SnackbarContent role='alert' error={isError}>
+          <div>{snackbar?.errorMessage || snackbar?.successMessage}</div>
+          <CloseButton
+            onClose={handleClose}
+            backdropColor={isError ? colorValues.orangeRed : colorValues.green}
+          />
+        </SnackbarContent>
+      </StyledSnackbar>
+    </ClickAwayListener>
   );
 };
 
