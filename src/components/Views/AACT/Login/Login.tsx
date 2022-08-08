@@ -1,23 +1,27 @@
 import React from 'react';
+import useSnackbar from '../../../../hooks/useSnackbar';
 import aact from '../../../../assets/AACT.png';
 import Button from '../../../Shared/Button';
 import { Page } from '../AACT.style';
 import { FormSection, InputWrapper, InputLabel, Input } from './Login.style';
 
 const Login = () => {
+  const snackbar = useSnackbar();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!username && !password) {
-      alert('Please enter your name and password.');
+      snackbar.setErrorMessage('Please enter your name and password.');
     } else if (!username) {
-      alert('Please enter your name.');
+      snackbar.setErrorMessage('Please enter your name.');
     } else if (!password) {
-      alert('Please enter your password.');
+      snackbar.setErrorMessage('Please enter your password.');
     } else {
-      alert(`Your name is ${username}, and your password is ${password}`);
+      snackbar.setSuccessMessage(
+        `Your name is ${username}, and your password is ${password}`
+      );
     }
   };
 

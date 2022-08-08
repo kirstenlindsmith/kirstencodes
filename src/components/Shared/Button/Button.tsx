@@ -2,11 +2,7 @@ import React from 'react';
 import {} from 'styled-components/cssprop';
 
 //helpers
-import {
-  bestTextColor,
-  changeHexColor,
-  colorValues,
-} from '../../../helpers/colors';
+import { bestTextColor } from '../../../helpers/colors';
 import { ButtonColor, ButtonSize } from './buttonConstants';
 
 //assets
@@ -30,9 +26,10 @@ type Props = {
   success?: boolean;
   error?: boolean;
   color?: ButtonColor;
+  svgColor?: string;
+  backdropColor?: string;
   size?: ButtonSize;
   fullWidth?: boolean;
-  svgColor?: string;
 } & BasicProps;
 
 const defaultState: {
@@ -50,10 +47,11 @@ const Button = ({
   loading,
   success,
   error,
-  color,
+  color = 'red',
+  svgColor,
+  backdropColor,
   size,
   fullWidth,
-  svgColor,
   disabled,
   ...rest
 }: Props) => {
@@ -195,6 +193,7 @@ const Button = ({
     <StyledButton
       color={bestButtonColor}
       backgroundColor={allProps?.background}
+      backdropColor={backdropColor}
       textColor={allProps?.textColor}
       css={buttonLoadingAnimation}
       style={{

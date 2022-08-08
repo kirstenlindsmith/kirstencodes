@@ -111,36 +111,41 @@ export const buildButtonStyle: ({
 
 export const StyledButton = styled.button<{
   color: ButtonColor;
-  backgroundColor?: string;
   textColor?: string;
+  backgroundColor?: string;
+  backdropColor?: string;
   loading?: boolean;
   disabled?: boolean;
 }>`
-  color: ${(props) =>
-    props.disabled && !props.loading
+  color: ${(props) => {
+    console.log('color:', props.color);
+    return props.disabled && !props.loading
       ? buttonColorDictionary.disabled.text
-      : props.textColor ?? buttonColorDictionary[props.color].text};
+      : props.textColor ?? buttonColorDictionary[props.color].text;
+  }}
+    };
   background-color: ${(props) =>
     props.disabled && !props.loading
       ? buttonColorDictionary.disabled.background
       : props.backgroundColor ?? buttonColorDictionary[props.color].background};
   border: none;
   white-space: nowrap;
-  &:hover {
-    background-color: ${(props) =>
-      props.disabled && !props.loading
+  &:hover, &:focus {
+    background-color: ${(props) => {
+      if (props.color === 'clear' && !props.disabled) {
+        console.log('props.backdropColor', props.backdropColor);
+        return props.backdropColor
+          ? changeHexColor(props.backdropColor, -15)
+          : colorValues.lightestGray;
+      }
+      return props.disabled && !props.loading
         ? buttonColorDictionary.disabled.background
         : props.backgroundColor
         ? changeHexColor(props.backgroundColor, -15)
-        : buttonColorDictionary[props.color].interact};
+        : buttonColorDictionary[props.color].interact;
+    }};
   }
   &:focus {
-    background-color: ${(props) =>
-      props.disabled && !props.loading
-        ? buttonColorDictionary.disabled.background
-        : props.backgroundColor
-        ? changeHexColor(props.backgroundColor, -15)
-        : buttonColorDictionary[props.color].interact};
     outline: none;
   }
 `;

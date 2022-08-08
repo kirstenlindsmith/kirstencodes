@@ -59,7 +59,7 @@ class ErrorBoundary extends React.Component<
           </ErrorText>
           <StackedButtons>
             <Button onClick={() => this.goHome()}>return home</Button>
-            <Button color={'orange'} onClick={() => this.reportBug()}>
+            <Button color='orange' onClick={() => this.reportBug()}>
               report bug
             </Button>
           </StackedButtons>

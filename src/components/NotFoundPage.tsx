@@ -17,7 +17,7 @@ const NotFoundPage = () => {
         <BlueH1>Sorry, but the page you’re looking for doesn’t exist!</BlueH1>
         <StackedButtons>
           <Button onClick={() => navigate('/')}>return home</Button>
-          <Button color={'orange'} onClick={() => navigate(-1)}>
+          <Button color='orange' onClick={() => navigate(-1)}>
             GO BACK
           </Button>
         </StackedButtons>

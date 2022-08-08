@@ -1,7 +1,7 @@
 import React from 'react';
 import { colorValues } from '../../../helpers/colors';
 
-export default ({
+const IcWarning = ({
   color,
   ...rest
 }: { color?: string } & React.SVGProps<SVGSVGElement>) => (
@@ -23,3 +23,5 @@ export default ({
     </g>
   </svg>
 );
+
+export default IcWarning;
