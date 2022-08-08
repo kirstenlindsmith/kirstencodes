@@ -18,20 +18,25 @@ export enum paddingValues {
   small = '4px 10px',
 }
 
-export type ButtonColor = 'primary' | 'secondary' | 'disabled';
+export type ButtonColor = 'red' | 'orange' | 'blue' | 'disabled';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
 export const buttonColorDictionary = {
-  primary: {
+  red: {
     text: colorValues.white,
     background: colorValues.orangeRed,
     interact: changeHexColor(colorValues.orangeRed, -15),
   },
-  secondary: {
+  orange: {
     text: colorValues.white,
     background: colorValues.orange,
     interact: changeHexColor(colorValues.orange, -15),
+  },
+  blue: {
+    text: colorValues.white,
+    background: colorValues.blue,
+    interact: changeHexColor(colorValues.blue, -15),
   },
   disabled: {
     text: colorValues.white,

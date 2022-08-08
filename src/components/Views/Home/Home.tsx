@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../Shared/Button';
+import { PinkPage } from '../../Shared/Shared.style';
 import {
-  Page,
   LogoSection,
   LogoEye,
   LogoEyeLidTop,
@@ -78,7 +78,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Page>
+    <PinkPage>
       <LogoSection>
         <img src={logo} />
         <LogoEyeLidTop />
@@ -96,7 +96,7 @@ const Home = () => {
       <Button size='large' onClick={() => navigate('/aact')}>
         ENTER
       </Button>
-    </Page>
+    </PinkPage>
   );
 };
 

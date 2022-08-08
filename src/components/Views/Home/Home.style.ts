@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 import { colorValues } from '../../../helpers/colors';
 
-export const Page = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  background-color: ${colorValues.pink};
-  padding: 1.5rem;
-`;
-
 export const LogoSection = styled.div`
   position: relative;
   max-height: 75%;

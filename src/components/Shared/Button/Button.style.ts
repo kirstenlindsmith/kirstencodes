@@ -95,7 +95,7 @@ export const buildButtonStyle: ({
   fullWidth,
   overrideStyle,
 }: ButtonBuildingProps) => React.CSSProperties = ({
-  color = 'primary',
+  color = 'red',
   size = 'medium',
   fullWidth,
   overrideStyle = {},
