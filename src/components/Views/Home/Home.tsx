@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../Shared/Button';
 import {
   Page,
@@ -6,7 +7,7 @@ import {
   LogoEye,
   LogoEyeLidTop,
   LogoEyeLidBottom,
-  LogoEyeTearDucts,
+  LogoEyeBorder,
   LogoPupil,
 } from './Home.style';
 import logo from '../../../assets/KirstenCodes.png';
@@ -19,9 +20,9 @@ const eyeMedLow = 'calc(100% - 5rem)';
 const eyeMedHigh = 'calc(100% - 3.6rem)';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [eyeX, setEyeX] = React.useState(eyeXStart);
   const [eyeY, setEyeY] = React.useState(eyeYStart);
-  // const [eyeRotation, setEyeRotation] = React.useState(0);
 
   const moveEye = (e: MouseEvent) => {
     const eye = document?.querySelector('#eye');
@@ -90,9 +91,11 @@ const Home = () => {
           />
         </LogoEye>
         <LogoEyeLidBottom />
-        <LogoEyeTearDucts />
+        <LogoEyeBorder />
       </LogoSection>
-      <Button>CLICK ME</Button>
+      <Button size='large' onClick={() => navigate('/aact')}>
+        ENTER
+      </Button>
     </Page>
   );
 };

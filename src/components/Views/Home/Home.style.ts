@@ -32,9 +32,9 @@ export const LogoEye = styled.div`
 export const LogoEyeLidTop = styled.div`
   position: absolute;
   z-index: 1000;
-  left: 31.9%;
+  left: 31.6%;
   top: 54%;
-  width: 5.75rem;
+  width: 5.9rem;
   height: 9rem;
   border-radius: 100%;
   background-color: transparent;
@@ -47,13 +47,13 @@ export const LogoEyeLidBottom = styled(LogoEyeLidTop)`
   box-shadow: 0px 2.5rem 0px 0px ${colorValues.lightBlue};
 `;
 
-export const LogoEyeTearDucts = styled.div`
+export const LogoEyeBorder = styled.div`
   position: absolute;
   z-index: 1;
-  left: 31%;
-  bottom: 26%;
-  width: 17%;
-  height: 25%;
+  left: 31.7%;
+  bottom: 22%;
+  width: 16%;
+  height: 34%;
   border-radius: 50%;
   background-color: ${colorValues.blue};
 `;

@@ -57,8 +57,8 @@ const Button = ({
   disabled,
   ...rest
 }: Props) => {
-  const bestButtonColor =
-    (disabled && ButtonColor.disabled) || (color ?? ButtonColor.primary);
+  const bestButtonColor: ButtonColor =
+    (disabled && 'disabled') || (color ?? 'primary');
   const [isFocused, setFocused] = React.useState<boolean | undefined>(false);
   const [rippleCount, setRippleCount] = React.useState(
     defaultState.rippleCount
