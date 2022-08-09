@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project are documented in this file.
+All notable changes to the project are documented in this file.
 
 ## 1.0.0
 
@@ -9,8 +9,12 @@ All notable changes to this project are documented in this file.
 - basic webpack and tsconfig
 - basic index.html and App
 - ErrorBoundary view and 404 page
-- custom Button component
-- custom Icons for loading, error, and success states
+- basic Icons
+- Button component, with some preconfigured buttons
+- Snackbar component, with accompanying context
+- ClickAwayListener component adapted from MUI
+- landing page
+- AACT project demo section, including fake Login and Home views
 
 ### Changed
 

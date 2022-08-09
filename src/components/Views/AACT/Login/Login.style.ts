@@ -1,8 +1,17 @@
 import styled from 'styled-components';
 import { colorValues } from '../../../../helpers/colors';
 
+export const LoginPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+`;
+
 export const FormSection = styled.div`
-  padding: 1rem;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

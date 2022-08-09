@@ -17,7 +17,6 @@ const CloseButton = ({
 }: Props) => (
   <Button
     aria-label='Close'
-    color='transparent'
     backdropColor={backdropColor}
     onClick={() => onClose()}
     style={{
@@ -31,6 +30,7 @@ const CloseButton = ({
       ...(style ?? {}),
     }}
     {...rest}
+    color='transparent'
   >
     <IcClose color={iconColor} />
   </Button>

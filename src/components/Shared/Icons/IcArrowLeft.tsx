@@ -6,19 +6,19 @@ const IcArrow = ({
   ...rest
 }: { color?: string } & React.SVGProps<SVGSVGElement>) => (
   <svg
-    xmlns='http://www.w3.org/2000/svg'
-    width='36'
-    height='36'
-    viewBox='0 0 36 36'
     {...rest}
+    xmlns='http://www.w3.org/2000/svg'
+    width='24'
+    height='25'
+    viewBox='0 0 24 25'
   >
     <g fill='none' fillRule='evenodd'>
       <path
         fill={color || colorValues.black}
         fillRule='nonzero'
-        d='M10.5 15L18 22.5 25.5 15z'
+        d='M15.41 17.09l-4.58-4.59 4.58-4.59L14 6.5l-6 6 6 6z'
       />
-      <path d='M0 0L36 0 36 36 0 36z' />
+      <path d='M0 .5h24v24H0z' />
     </g>
   </svg>
 );

@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { colorValues } from '../../../helpers/colors';
 
-const slideInAnimation = keyframes({
+const slideDown = keyframes({
   from: {
     opacity: 0,
     transform: 'translateY(-3rem)',
@@ -39,5 +39,5 @@ export const SnackbarContent = styled.div<{
   color: ${colorValues.white};
   background-color: ${({ error }) =>
     error ? colorValues.orangeRed : colorValues.green};
-  animation: 200ms ease-out forwards ${slideInAnimation};
+  animation: 200ms ease-out forwards ${slideDown};
 `;

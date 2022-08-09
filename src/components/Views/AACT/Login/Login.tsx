@@ -3,8 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import useSnackbar from '../../../../hooks/useSnackbar';
 import aact from '../../../../assets/AACT.png';
 import Button from '../../../Shared/Button';
-import { Page } from '../AACT.style';
-import { FormSection, InputWrapper, InputLabel, Input } from './Login.style';
+import { BackButton } from '../../../Shared/Button/CustomButtons';
+import {
+  LoginPage,
+  FormSection,
+  InputWrapper,
+  InputLabel,
+  Input,
+} from './Login.style';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,13 +27,13 @@ const Login = () => {
     } else if (!password) {
       snackbar.setErrorMessage('Please enter your password.');
     } else {
-      snackbar.setSuccessMessage(`Welcome ${username}!`);
+      snackbar.setSuccessMessage(`Hi ${username}!`);
       navigate('/aact/home');
     }
   };
 
   return (
-    <Page>
+    <LoginPage style={{ alignItems: 'center' }}>
       <FormSection>
         <img src={aact} />
         <form onSubmit={handleSubmit}>
@@ -61,8 +67,14 @@ const Login = () => {
             Submit
           </Button>
         </form>
+        <BackButton
+          style={{
+            top: '10.6rem',
+            left: '-4rem',
+          }}
+        />
       </FormSection>
-    </Page>
+    </LoginPage>
   );
 };
 

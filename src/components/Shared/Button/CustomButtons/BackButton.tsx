@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../';
-import IcArrow from '../../Icons/IcArrow';
+import IcArrowLeft from '../../Icons/IcArrowLeft';
 
 type Props = {
   onBack?: () => void;
@@ -27,7 +27,7 @@ const BackButton = ({ onBack, style, ...rest }: Props) => {
       {...rest}
       color='transparent'
     >
-      <IcArrow />
+      <IcArrowLeft />
     </Button>
   );
 };
