@@ -46,7 +46,7 @@ export const StyledHamburgerMenu = styled.div<{ open: boolean }>`
 
 export const MenuLogo = styled.img`
   height: 5rem;
-  margin-left: -0.5rem;
+  margin-left: 2rem;
 `;
 
 export const KirstenLogo = styled.img`

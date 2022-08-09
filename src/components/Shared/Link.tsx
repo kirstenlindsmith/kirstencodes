@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const StyledLink = styled.div<{ activeLink: boolean }>`
   width: max-content;
+  transition: all ease-out 200ms;
   ${({ activeLink }) =>
     activeLink
       ? `

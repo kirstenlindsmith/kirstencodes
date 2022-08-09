@@ -1,16 +1,33 @@
 import React from 'react';
+import aact from '../../../../assets/AACT.png';
 import useSnackbar from '../../../../hooks/useSnackbar';
 import HamburgerMenu from './HamburgerMenu';
-import { UserHomePage } from './UserHome.style';
+import {
+  UserHomePage,
+  MainContainer,
+  Header,
+  PageBody,
+  BodyCard,
+  Footer,
+} from './UserHome.style';
 
 const UserHome = () => {
   return (
     <UserHomePage>
-      <header>Header</header>
       <HamburgerMenu />
-      <div>Small table of study data</div>
-      <div>Pie chart of conditions</div>
-      <footer>Footer</footer>
+      <MainContainer>
+        <Header>
+          <h1>Condition Data</h1>
+          <img src={aact} aria-label='AACT' />
+        </Header>
+        <PageBody>
+          <BodyCard style={{ marginRight: '1.5rem' }}>
+            Small table of study data
+          </BodyCard>
+          <BodyCard>Pie chart of conditions</BodyCard>
+        </PageBody>
+      </MainContainer>
+      <Footer>Footer</Footer>
     </UserHomePage>
   );
 };
