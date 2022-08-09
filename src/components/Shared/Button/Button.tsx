@@ -18,8 +18,6 @@ import {
   StyledButton,
 } from './Button.style';
 
-type BasicProps = React.ComponentPropsWithoutRef<'button'>;
-
 type Props = {
   children: React.ReactNode;
   loading?: boolean;
@@ -30,7 +28,7 @@ type Props = {
   backdropColor?: string;
   size?: ButtonSize;
   fullWidth?: boolean;
-} & BasicProps;
+} & React.ComponentPropsWithoutRef<'button'>;
 
 const defaultState: {
   rippleCount: number;

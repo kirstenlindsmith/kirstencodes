@@ -132,7 +132,7 @@ export const StyledButton = styled.button<{
   white-space: nowrap;
   &:hover, &:focus {
     background-color: ${(props) => {
-      if (props.color === 'clear' && !props.disabled) {
+      if (props.color === 'transparent' && !props.disabled) {
         console.log('props.backdropColor', props.backdropColor);
         return props.backdropColor
           ? changeHexColor(props.backdropColor, -15)

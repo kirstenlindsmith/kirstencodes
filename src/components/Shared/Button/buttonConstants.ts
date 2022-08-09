@@ -18,7 +18,12 @@ export enum paddingValues {
   small = '4px 10px',
 }
 
-export type ButtonColor = 'red' | 'orange' | 'blue' | 'clear' | 'disabled';
+export type ButtonColor =
+  | 'red'
+  | 'orange'
+  | 'blue'
+  | 'transparent'
+  | 'disabled';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
@@ -38,7 +43,7 @@ export const buttonColorDictionary = {
     background: colorValues.blue,
     interact: changeHexColor(colorValues.blue, -15),
   },
-  clear: {
+  transparent: {
     text: colorValues.black,
     background: 'transparent',
     interact: colorValues.lightestGray,

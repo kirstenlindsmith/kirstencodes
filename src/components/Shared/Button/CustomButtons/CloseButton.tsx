@@ -2,24 +2,24 @@ import React from 'react';
 import Button from '../';
 import IcClose from '../../Icons/IcClose';
 
+type Props = {
+  onClose: () => void;
+  iconColor?: string;
+  backdropColor?: string;
+} & React.ComponentPropsWithoutRef<'button'>;
+
 const CloseButton = ({
   onClose,
   iconColor,
   backdropColor,
   style,
   ...rest
-}: {
-  onClose: () => void;
-  iconColor?: string;
-  backdropColor?: string;
-} & React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->) => (
+}: Props) => (
   <Button
     aria-label='Close'
-    onClick={() => onClose()}
+    color='transparent'
     backdropColor={backdropColor}
+    onClick={() => onClose()}
     style={{
       position: 'absolute',
       right: '1rem',
@@ -31,7 +31,6 @@ const CloseButton = ({
       ...(style ?? {}),
     }}
     {...rest}
-    color='clear'
   >
     <IcClose color={iconColor} />
   </Button>
