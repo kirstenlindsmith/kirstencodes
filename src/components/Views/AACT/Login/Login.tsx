@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSnackbar from '../../../../hooks/useSnackbar';
-import aact from '~/assets/AACT.png';
+import aact from '../../../../assets/AACT.png';
 import Button from '../../../Shared/Button';
-import { BackButton } from '../../../Shared/Button/CustomButtons';
+import { ArrowLeftButton } from '../../../Shared/Button/CustomButtons';
 import {
   LoginPage,
   FormSection,
@@ -67,7 +67,7 @@ const Login = () => {
             Submit
           </Button>
         </form>
-        <BackButton
+        <ArrowLeftButton
           style={{
             top: '10.6rem',
             left: '-4rem',

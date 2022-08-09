@@ -1,13 +1,13 @@
 import React from 'react';
-import hamburgerMenuLogo from '~/assets/hamburgerMenu.png';
-import eye from '~/assets/eye.png';
-import home from '~/assets/home.png';
-import book from '~/assets/book.png';
-import cat from '~/assets/cat.png';
-import dog from '~/assets/dog.png';
-import paw from '~/assets/paw.png';
-import kirstenCodesSimplified from '~/assets/KirstenCodes_simplified.png';
-import { BackButton } from '../../../../../Shared/Button/CustomButtons';
+import hamburgerMenuLogo from '../../../../../../assets/hamburgerMenu.png';
+import eye from '../../../../../../assets/eye.png';
+import home from '../../../../../../assets/home.png';
+import book from '../../../../../../assets/book.png';
+import cat from '../../../../../../assets/cat.png';
+import dog from '../../../../../../assets/dog.png';
+import paw from '../../../../../../assets/paw.png';
+import kirstenCodesSimplified from '../../../../../../assets/KirstenCodes_simplified.png';
+import { ArrowLeftButton } from '../../../../../Shared/Button/CustomButtons';
 import {
   StyledHamburgerMenu,
   MenuLogo,
@@ -25,9 +25,9 @@ const HamburgerMenu = () => {
 
   return (
     <StyledHamburgerMenu role='navigation' open={open} onClick={toggleNav}>
-      <BackButton
+      <ArrowLeftButton
         aria-label={open ? 'Close menu' : 'Open menu'}
-        onBack={toggleNav}
+        onClick={toggleNav}
         style={{
           left: undefined,
           right: '1.5rem',
@@ -39,11 +39,7 @@ const HamburgerMenu = () => {
       <MenuItemSection>
         <MenuMainItem url='/'>
           Kirsten Codes Homepage
-          <MenuItemLogo
-            src={eye}
-            style={{ height: '1.65rem', right: '0.85rem' }}
-            aria-label=''
-          />
+          <MenuItemLogo src={eye} style={{ height: '1.65rem' }} aria-label='' />
         </MenuMainItem>
       </MenuItemSection>
       <MenuItemSection>

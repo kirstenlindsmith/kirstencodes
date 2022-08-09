@@ -4,16 +4,16 @@ import Button from '../';
 import IcArrowLeft from '../../Icons/IcArrowLeft';
 
 type Props = {
-  onBack?: () => void;
+  onClick?: () => void;
 } & React.ComponentPropsWithoutRef<'button'>;
 
-const BackButton = ({ onBack, style, ...rest }: Props) => {
+const ArrowLeftButton = ({ onClick, style, ...rest }: Props) => {
   const navigate = useNavigate();
-  const handleClick = onBack ? onBack : () => navigate(-1);
+  const handleClick = onClick ? onClick : () => navigate(-1); // back button by default
 
   return (
     <Button
-      aria-label='Back'
+      aria-label='Back' // back button by default
       onClick={handleClick}
       style={{
         position: 'absolute',
@@ -33,4 +33,4 @@ const BackButton = ({ onBack, style, ...rest }: Props) => {
   );
 };
 
-export default BackButton;
+export default ArrowLeftButton;

@@ -1,47 +1,58 @@
+import React from 'react';
 import styled from 'styled-components';
 import { colorValues } from '../../../../helpers/colors';
 
 export const UserHomePage = styled.div`
   height: 100%;
   background-color: ${colorValues.offWhite};
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 export const MainContainer = styled.div`
   height: calc(100% - 10rem);
-  box-sizing: border-box;
+  margin-bottom: 1.5rem;
   padding: 1.5rem 1.5rem 1.5rem 6.5rem;
 `;
 
 export const Header = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
   width: 100%;
   height: 5.5rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: ${colorValues.white};
   img {
     height: 5rem;
     object-fit: contain;
+    margin-right: 1rem;
   }
 `;
 
 export const PageBody = styled.div`
-  width: 100%;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  height: calc(100% - 5.5rem);
   margin: 1.5rem 0;
 `;
 
 export const BodyCard = styled.div`
   flex-grow: 1;
   flex-direction: column;
+  box-sizing: border-box;
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: ${colorValues.white};
 `;
+
+export const tableCardStyles: React.CSSProperties = {
+  width: '52.306rem',
+  marginRight: '1.5rem',
+  paddingRight: '0.25rem',
+  paddingBottom: '1.5rem',
+};
 
 export const Footer = styled.footer`
   width: 100%;

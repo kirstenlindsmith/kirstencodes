@@ -1,6 +1,5 @@
 import React from 'react';
-import aact from '~/assets/AACT.png';
-import useSnackbar from '../../../../hooks/useSnackbar';
+import aact from '../../../../assets/AACT.png';
 import HamburgerMenu from './components/HamburgerMenu';
 import ConditionsTable from './components/ConditionsTable';
 import {
@@ -9,6 +8,7 @@ import {
   Header,
   PageBody,
   BodyCard,
+  tableCardStyles,
   Footer,
 } from './UserHome.style';
 
@@ -18,11 +18,11 @@ const UserHome = () => {
       <HamburgerMenu />
       <MainContainer>
         <Header>
-          <h1>Condition Data</h1>
           <img src={aact} aria-label='AACT' />
+          <h1>Study Data</h1>
         </Header>
         <PageBody>
-          <BodyCard style={{ marginRight: '1.5rem' }}>
+          <BodyCard style={tableCardStyles}>
             <ConditionsTable />
           </BodyCard>
           <BodyCard>Pie chart of conditions</BodyCard>

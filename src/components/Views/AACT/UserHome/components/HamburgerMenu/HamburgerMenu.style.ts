@@ -22,6 +22,7 @@ const slideLeft = keyframes({
 
 export const StyledHamburgerMenu = styled.div<{ open: boolean }>`
   position: fixed;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -64,7 +65,7 @@ export const MenuItemSection = styled.div`
 
 export const MenuItemLogo = styled.img`
   position: absolute;
-  right: 1rem;
+  right: 0;
   top: 0.3rem;
   height: 1.5rem;
 `;
@@ -78,6 +79,8 @@ const MenuItem = styled(Link)`
   padding: 0.5rem;
   outline: none;
   border: none;
+  text-decoration: none;
+  border-radius: 0.5rem;
   img {
     border-radius: 0.5rem;
     padding: 0.2rem;
@@ -86,6 +89,10 @@ const MenuItem = styled(Link)`
   &:hover img {
     outline: 5px auto Highlight;
     outline: 5px auto -webkit-focus-ring-color;
+  }
+  &:hover,
+  &:focus {
+    background-color: ${colorValues.lightestGray};
   }
 `;
 

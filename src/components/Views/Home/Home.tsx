@@ -10,7 +10,7 @@ import {
   LogoEyeBorder,
   LogoPupil,
 } from './Home.style';
-import logo from '~/assets/KirstenCodes.png';
+import logo from '../../../assets/KirstenCodes.png';
 
 const eyeXStart = '1.38rem';
 const eyeYStart = '1.6rem';
