@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
-import { changeHexColor, colorValues } from '../../../helpers/colors';
+import { changeHexColor, ColorValue } from '../../../helpers/colors';
 import {
   ButtonColor,
   buttonColorDictionary,
@@ -50,7 +50,7 @@ export const Ripple = styled.div<{ focus?: boolean }>`
     border-radius: 100%;
     position: absolute;
     opacity: 0.75;
-    background-color: ${colorValues.white};
+    background-color: ${ColorValue.white};
     animation-name: ${(props) =>
       props.focus ? pulseAnimation : rippleAnimation};
     animation-duration: 850ms;
@@ -134,7 +134,7 @@ export const StyledButton = styled.button<{
       if (props.color === 'transparent' && !props.disabled) {
         return props.backdropColor
           ? changeHexColor(props.backdropColor, -15)
-          : colorValues.lightestGray;
+          : ColorValue.lightestGray;
       }
       return props.disabled && !props.loading
         ? buttonColorDictionary.disabled.background

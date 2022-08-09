@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colorValues } from '../../../../../../helpers/colors';
+import { ColorValue } from '../../../../../../helpers/colors';
 
 export const Container = styled.div`
   height: 100%;
@@ -19,7 +19,7 @@ export const Table = styled.table`
 export const TableHeader = styled.thead`
   th {
     position: sticky;
-    background-color: ${colorValues.white};
+    background-color: ${ColorValue.white};
     top: 0;
     padding-bottom: 0.5rem;
   }

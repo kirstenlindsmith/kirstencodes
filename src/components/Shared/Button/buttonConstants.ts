@@ -1,4 +1,4 @@
-import { colorValues, changeHexColor } from '../../../helpers/colors';
+import { ColorValue, changeHexColor } from '../../../helpers/colors';
 
 export enum heightValues {
   large = 48,
@@ -29,28 +29,28 @@ export type ButtonSize = 'small' | 'medium' | 'large';
 
 export const buttonColorDictionary = {
   red: {
-    text: colorValues.white,
-    background: colorValues.orangeRed,
-    interact: changeHexColor(colorValues.orangeRed, -15),
+    text: ColorValue.white,
+    background: ColorValue.orangeRed,
+    interact: changeHexColor(ColorValue.orangeRed, -15),
   },
   orange: {
-    text: colorValues.white,
-    background: colorValues.orange,
-    interact: changeHexColor(colorValues.orange, -15),
+    text: ColorValue.white,
+    background: ColorValue.orange,
+    interact: changeHexColor(ColorValue.orange, -15),
   },
   blue: {
-    text: colorValues.white,
-    background: colorValues.blue,
-    interact: changeHexColor(colorValues.blue, -15),
+    text: ColorValue.white,
+    background: ColorValue.blue,
+    interact: changeHexColor(ColorValue.blue, -15),
   },
   transparent: {
-    text: colorValues.black,
+    text: ColorValue.black,
     background: 'transparent',
-    interact: colorValues.lightestGray,
+    interact: ColorValue.lightestGray,
   },
   disabled: {
-    text: colorValues.white,
-    background: colorValues.lightGray,
-    interact: colorValues.lightGray,
+    text: ColorValue.white,
+    background: ColorValue.lightGray,
+    interact: ColorValue.lightGray,
   },
 };

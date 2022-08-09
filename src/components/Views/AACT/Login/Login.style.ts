@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorValues } from '../../../../helpers/colors';
+import { ColorValue } from '../../../../helpers/colors';
 
 export const LoginPage = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const FormSection = styled.div`
   width: 19rem;
   padding: 10vh 0 1.25rem;
   h1 {
-    color: ${colorValues.black};
+    color: ${ColorValue.black};
     margin: 0.5rem 0 2rem;
   }
   img {
@@ -42,14 +42,14 @@ export const Input = styled.input<{ value?: string }>`
   box-sizing: border-box;
   border: none;
   outline: none;
-  border-bottom: 1px solid ${colorValues.black};
+  border-bottom: 1px solid ${ColorValue.black};
   margin-bottom: 1px;
   padding: 0.5rem 2rem 0.5rem 0.1rem;
-  color: ${colorValues.black};
+  color: ${ColorValue.black};
   font-weight: ${({ value }) => (value.length > 0 ? 'bold' : 'normal')};
   &:focus,
   &:hover {
-    border-bottom: 2px solid ${colorValues.black};
+    border-bottom: 2px solid ${ColorValue.black};
     margin-bottom: 0;
   }
 `;

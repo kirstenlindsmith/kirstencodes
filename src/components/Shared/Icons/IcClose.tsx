@@ -1,5 +1,5 @@
 import React from 'react';
-import { colorValues } from '../../../helpers/colors';
+import { ColorValue } from '../../../helpers/colors';
 
 const IcClose = ({
   color,
@@ -15,7 +15,7 @@ const IcClose = ({
     <g fill='none' fillRule='evenodd'>
       <path d='M24 0L0 0 0 24 24 24z' transform='matrix(1 0 0 -1 1 24)' />
       <path
-        fill={color || colorValues.white}
+        fill={color || ColorValue.white}
         d='M19 17.6L17.6 19 12 13.4 6.4 19 5 17.6 10.6 12 5 6.4 6.4 5 12 10.6 17.6 5 19 6.4 13.4 12z'
         transform='matrix(1 0 0 -1 1 24)'
       />

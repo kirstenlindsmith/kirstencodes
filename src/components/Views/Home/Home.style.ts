@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorValues } from '../../../helpers/colors';
+import { ColorValue } from '../../../helpers/colors';
 
 export const LogoSection = styled.div`
   position: relative;
@@ -17,7 +17,7 @@ export const LogoEye = styled.div`
   width: 5.6rem;
   height: 6rem;
   border-radius: 50%;
-  background-color: ${colorValues.offWhite};
+  background-color: ${ColorValue.offWhite};
 `;
 
 export const LogoEyeLidTop = styled.div`
@@ -29,13 +29,13 @@ export const LogoEyeLidTop = styled.div`
   height: 9rem;
   border-radius: 100%;
   background-color: transparent;
-  box-shadow: 0px -2.5rem 0px 0px ${colorValues.lightBlue};
+  box-shadow: 0px -2.5rem 0px 0px ${ColorValue.lightBlue};
 `;
 
 export const LogoEyeLidBottom = styled(LogoEyeLidTop)`
   top: auto;
   bottom: 31%;
-  box-shadow: 0px 2.5rem 0px 0px ${colorValues.lightBlue};
+  box-shadow: 0px 2.5rem 0px 0px ${ColorValue.lightBlue};
 `;
 
 export const LogoEyeBorder = styled.div`
@@ -46,7 +46,7 @@ export const LogoEyeBorder = styled.div`
   width: 16%;
   height: 34%;
   border-radius: 50%;
-  background-color: ${colorValues.blue};
+  background-color: ${ColorValue.blue};
 `;
 
 export const LogoPupil = styled.div`
@@ -57,6 +57,6 @@ export const LogoPupil = styled.div`
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
-  background-color: ${colorValues.black};
+  background-color: ${ColorValue.black};
   transition: all ease-out 100ms;
 `;

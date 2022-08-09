@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colorValues } from '../../../../helpers/colors';
+import { ColorValue } from '../../../../helpers/colors';
 
 export const UserHomePage = styled.div`
   height: 100%;
-  background-color: ${colorValues.offWhite};
+  background-color: ${ColorValue.offWhite};
   * {
     box-sizing: border-box;
   }
@@ -44,11 +44,11 @@ export const BodyCard = styled.div`
   box-sizing: border-box;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: ${colorValues.white};
+  background-color: ${ColorValue.white};
 `;
 
 export const tableCardStyles: React.CSSProperties = {
-  width: '52.306rem',
+  width: '50rem',
   marginRight: '1.5rem',
   paddingRight: '0.25rem',
   paddingBottom: '1.5rem',
@@ -58,7 +58,7 @@ export const Footer = styled.footer`
   width: 100%;
   height: 10rem;
   padding: 1.25rem 1rem 1rem 6.5rem;
-  color: ${colorValues.darkestGray};
+  color: ${ColorValue.darkestGray};
   background: linear-gradient(
     0deg,
     rgba(119, 231, 229, 1) 0%,

@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import Link from '../../../../../Shared/Link';
-import { colorValues } from '../../../../../../helpers/colors';
+import { ColorValue } from '../../../../../../helpers/colors';
 
 const slideRight = keyframes({
   from: {
@@ -35,7 +35,7 @@ export const StyledHamburgerMenu = styled.div<{ open: boolean }>`
   border-radius: 0 1rem 1rem 0;
   font-weight: bold;
   cursor: pointer;
-  background-color: ${colorValues.white};
+  background-color: ${ColorValue.white};
   box-shadow: 0 2px 30px 0 rgba(51, 51, 51, 0.4),
     0 2px 10px 0 rgba(51, 51, 51, 0.1);
   animation: 200ms ease-out forwards
@@ -92,7 +92,7 @@ const MenuItem = styled(Link)`
   }
   &:hover,
   &:focus {
-    background-color: ${colorValues.lightestGray};
+    background-color: ${ColorValue.lightestGray};
   }
 `;
 
@@ -108,5 +108,5 @@ export const MenuSubItem = styled(MenuItem)`
   width: calc(100% - 1rem);
   margin-left: 1rem;
   font-size: 0.875rem;
-  color: ${colorValues.darkestGray};
+  color: ${ColorValue.darkestGray};
 `;

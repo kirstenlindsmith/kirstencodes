@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { colorValues } from '../../../helpers/colors';
+import { ColorValue } from '../../../helpers/colors';
 
 const slideDown = keyframes({
   from: {
@@ -36,8 +36,8 @@ export const SnackbarContent = styled.div<{
   max-width: 50%;
   padding: 1rem 5rem 1rem 1rem;
   border-radius: 0.4rem;
-  color: ${colorValues.white};
+  color: ${ColorValue.white};
   background-color: ${({ error }) =>
-    error ? colorValues.orangeRed : colorValues.green};
+    error ? ColorValue.orangeRed : ColorValue.green};
   animation: 200ms ease-out forwards ${slideDown};
 `;

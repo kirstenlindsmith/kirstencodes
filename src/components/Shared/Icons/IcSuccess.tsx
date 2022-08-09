@@ -1,5 +1,5 @@
 import React from 'react';
-import { colorValues } from '../../../helpers/colors';
+import { ColorValue } from '../../../helpers/colors';
 
 const IcSuccess = ({
   color,
@@ -16,7 +16,7 @@ const IcSuccess = ({
     <g fill='none' fillRule='evenodd'>
       <path d='M0 0h24v24H0z' />
       <path
-        fill={color || colorValues.white}
+        fill={color || ColorValue.white}
         fillRule='nonzero'
         d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'
       />

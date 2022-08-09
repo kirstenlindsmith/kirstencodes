@@ -1,43 +1,13 @@
 import React from 'react';
-import useSnackbar from '../../../../../../hooks/useSnackbar';
 import { ArrowLeftButton } from '../../../../../Shared/Button/CustomButtons';
+import { ColumnName, Study, DateSort } from '../../types';
 import {
   Container,
   Table,
   TableHeader,
   TableCell,
   dateSortStyle,
-} from './ConditionsTable.style';
-
-type ColumnName = 'NCTId' | 'BriefTitle' | 'Condition' | 'LastUpdateSubmitDate';
-
-type Study = {
-  Rank: number;
-  NCTId: string[];
-  BriefTitle: string[];
-  Condition: string[];
-  LastUpdateSubmitDate: string[];
-};
-
-type ApiResponse = {
-  StudyFieldsResponse: {
-    APIVrs: string;
-    DataVrs: string;
-    Expression: string;
-    NStudiesAvail: number;
-    NStudiesFound: number;
-    MinRank: number;
-    MaxRank: number;
-    NStudiesReturned: number;
-    FieldList: ColumnName[];
-    StudyFields: Study[];
-  };
-};
-
-enum DateSort {
-  descending = 'descending',
-  ascending = 'ascending',
-}
+} from './StudyTable.style';
 
 const tableColumns: {
   name: ColumnName;
@@ -54,48 +24,24 @@ const tableColumns: {
   },
 ];
 
-const ConditionsTable = () => {
-  const snackbar = useSnackbar();
-  const [loading, setLoading] = React.useState(true);
-  const [tableData, setTableData] = React.useState<Study[]>([]);
+type Props = {
+  loading: boolean;
+  studyData: Study[];
+};
+
+const ConditionsTable = ({ loading, studyData }: Props) => {
   const [dateSort, setDateSort] = React.useState<DateSort>(DateSort.descending);
   const descendingDate = React.useMemo(
     () => dateSort === DateSort.descending,
     [dateSort]
   );
-  const endpoint = `https://www.clinicaltrials.gov/api/query/study_fields?fmt=json&fields=NCTId,BriefTitle,Condition,LastUpdateSubmitDate&min_rnk=1&max_rnk=100`;
 
-  const sortByDate = (tableData: Study[]) =>
-    tableData.sort((current, next) => {
-      const currentDate = new Date(current.LastUpdateSubmitDate[0]).getTime();
-      const nextDate = new Date(next.LastUpdateSubmitDate[0]).getTime();
-      return descendingDate ? nextDate - currentDate : currentDate - nextDate;
+  const sortByDate = (data: Study[]) =>
+    data.sort((first, second) => {
+      const firstDate = new Date(first.LastUpdateSubmitDate[0]).getTime();
+      const secondDate = new Date(second.LastUpdateSubmitDate[0]).getTime();
+      return descendingDate ? secondDate - firstDate : firstDate - secondDate;
     });
-
-  const fetchData = async () => {
-    try {
-      if (!loading) setLoading(true);
-      const rawResponse = await fetch(endpoint);
-      const { StudyFieldsResponse }: ApiResponse = await rawResponse.json();
-      const sortedTableData = sortByDate(StudyFieldsResponse.StudyFields);
-      setTableData(sortedTableData);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      snackbar?.setErrorMessage(
-        'Something went wrong fetching from the AACT API! Please refresh and try again.'
-      );
-      console.error('AACT fetch error:', error);
-    }
-  };
-
-  React.useEffect(() => {
-    fetchData();
-  }, []);
-
-  React.useEffect(() => {
-    setTableData(sortByDate(tableData));
-  }, [dateSort]);
 
   return (
     <Container>
@@ -128,7 +74,7 @@ const ConditionsTable = () => {
             </tr>
           </TableHeader>
           <tbody>
-            {tableData.map((row, i) => (
+            {sortByDate(studyData).map((row, i) => (
               <tr key={`row-${i}`}>
                 {tableColumns.map((column, j) => {
                   if (row[column.name].length > 0) {

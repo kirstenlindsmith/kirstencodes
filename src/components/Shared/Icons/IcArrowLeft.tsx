@@ -1,5 +1,5 @@
 import React from 'react';
-import { colorValues } from '../../../helpers/colors';
+import { ColorValue } from '../../../helpers/colors';
 
 const IcArrow = ({
   color,
@@ -14,7 +14,7 @@ const IcArrow = ({
   >
     <g fill='none' fillRule='evenodd'>
       <path
-        fill={color || colorValues.black}
+        fill={color || ColorValue.black}
         fillRule='nonzero'
         d='M15.41 17.09l-4.58-4.59 4.58-4.59L14 6.5l-6 6 6 6z'
       />

@@ -1,4 +1,4 @@
-export enum colorValues {
+export enum ColorValue {
   black = '#333333',
   darkestGray = '#4d4d4d',
   darkGray = '#919191',
@@ -29,7 +29,7 @@ export const findHexBrightness = (color: string) => {
     workingColor === '#ffff' ||
     workingColor === 'transparent'
   ) {
-    workingColor = colorValues.white;
+    workingColor = ColorValue.white;
   }
 
   const colorVal = parseInt(workingColor.replace('#', ''), 16);
@@ -45,7 +45,7 @@ export const findHexBrightness = (color: string) => {
 export const changeHexColor = (color: string, percent: number) => {
   let workingColor = color;
 
-  if (workingColor === 'transparent') return colorValues.lightestGray;
+  if (workingColor === 'transparent') return ColorValue.lightestGray;
 
   let workingPercent = percent;
   const colorVal = parseInt(workingColor.replace('#', ''), 16);
@@ -105,10 +105,10 @@ export const useBlackText = (color?: string) => {
     return true;
   }
 
-  const colorBrightness = findHexBrightness(workingColor ?? colorValues.white);
+  const colorBrightness = findHexBrightness(workingColor ?? ColorValue.white);
 
   return colorBrightness > 190;
 };
 
 export const bestTextColor = (color?: string) =>
-  useBlackText(color) ? colorValues.black : colorValues.white;
+  useBlackText(color) ? ColorValue.black : ColorValue.white;

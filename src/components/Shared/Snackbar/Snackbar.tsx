@@ -3,7 +3,7 @@ import useSnackbar from '../../../hooks/useSnackbar';
 import { CloseButton } from '../Button/CustomButtons';
 import ClickAwayListener from '../ClickAwayListener';
 import { StyledSnackbar, SnackbarContent } from './Snackbar.style';
-import { colorValues } from '../../../helpers/colors';
+import { ColorValue } from '../../../helpers/colors';
 
 const Snackbar = () => {
   const [open, setOpen] = React.useState(false);
@@ -32,9 +32,7 @@ const Snackbar = () => {
             {snackbar?.errorMessage || snackbar?.successMessage}
             <CloseButton
               onClose={handleClose}
-              backdropColor={
-                isError ? colorValues.orangeRed : colorValues.green
-              }
+              backdropColor={isError ? ColorValue.orangeRed : ColorValue.green}
             />
           </SnackbarContent>
         </StyledSnackbar>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Shared/Button';
 import styled from 'styled-components';
-import { colorValues } from '../helpers/colors';
+import { ColorValue } from '../helpers/colors';
 import { PinkPage, BlueH1, StackedButtons } from './Shared/Shared.style';
 
 const ErrorText = styled.code`
@@ -13,7 +13,7 @@ const ErrorText = styled.code`
   margin-bottom: 3rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background-color: ${colorValues.offWhite};
+  background-color: ${ColorValue.offWhite};
   word-wrap: break-word;
   box-decoration-break: clone;
 `;
