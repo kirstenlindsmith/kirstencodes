@@ -15,6 +15,7 @@ All notable changes to the project are documented in this file.
 - ClickAwayListener component adapted from MUI
 - landing page
 - AACT project demo section, including fake Login and Home views
+- HamburgerMenu for AACT user home
 
 ### Changed
 

@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <LoginPage style={{ alignItems: 'center' }}>
       <FormSection>
-        <img src={aact} />
+        <img src={aact} aria-label='AACT' />
         <form onSubmit={handleSubmit}>
           <h1>Log In</h1>
           <InputWrapper style={{ marginBottom: '1rem' }}>

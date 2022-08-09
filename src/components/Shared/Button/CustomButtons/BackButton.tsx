@@ -9,11 +9,12 @@ type Props = {
 
 const BackButton = ({ onBack, style, ...rest }: Props) => {
   const navigate = useNavigate();
+  const handleClick = onBack ? onBack : () => navigate(-1);
 
   return (
     <Button
       aria-label='Back'
-      onClick={() => navigate(-1)}
+      onClick={handleClick}
       style={{
         position: 'absolute',
         left: '1rem',
