@@ -1,13 +1,13 @@
 import React from 'react';
-import hamburgerMenuLogo from '../../../../../assets/hamburgerMenu.png';
-import eye from '../../../../../assets/eye.png';
-import home from '../../../../../assets/home.png';
-import book from '../../../../../assets/book.png';
-import cat from '../../../../../assets/cat.png';
-import dog from '../../../../../assets/dog.png';
-import paw from '../../../../../assets/paw.png';
-import kirstenCodesSimplified from '../../../../../assets/KirstenCodes_simplified.png';
-import { BackButton } from '../../../../Shared/Button/CustomButtons';
+import hamburgerMenuLogo from '~/assets/hamburgerMenu.png';
+import eye from '~/assets/eye.png';
+import home from '~/assets/home.png';
+import book from '~/assets/book.png';
+import cat from '~/assets/cat.png';
+import dog from '~/assets/dog.png';
+import paw from '~/assets/paw.png';
+import kirstenCodesSimplified from '~/assets/KirstenCodes_simplified.png';
+import { BackButton } from '../../../../../Shared/Button/CustomButtons';
 import {
   StyledHamburgerMenu,
   MenuLogo,

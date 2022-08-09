@@ -1,7 +1,8 @@
 import React from 'react';
-import aact from '../../../../assets/AACT.png';
+import aact from '~/assets/AACT.png';
 import useSnackbar from '../../../../hooks/useSnackbar';
-import HamburgerMenu from './HamburgerMenu';
+import HamburgerMenu from './components/HamburgerMenu';
+import ConditionsTable from './components/ConditionsTable';
 import {
   UserHomePage,
   MainContainer,
@@ -22,7 +23,7 @@ const UserHome = () => {
         </Header>
         <PageBody>
           <BodyCard style={{ marginRight: '1.5rem' }}>
-            Small table of study data
+            <ConditionsTable />
           </BodyCard>
           <BodyCard>Pie chart of conditions</BodyCard>
         </PageBody>

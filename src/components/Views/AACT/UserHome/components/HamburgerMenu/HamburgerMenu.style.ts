@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
-import Link from '../../../../Shared/Link';
-import { colorValues } from '../../../../../helpers/colors';
+import Link from '../../../../../Shared/Link';
+import { colorValues } from '../../../../../../helpers/colors';
 
 const slideRight = keyframes({
   from: {

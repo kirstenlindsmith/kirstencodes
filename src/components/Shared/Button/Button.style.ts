@@ -118,7 +118,6 @@ export const StyledButton = styled.button<{
   disabled?: boolean;
 }>`
   color: ${(props) => {
-    console.log('color:', props.color);
     return props.disabled && !props.loading
       ? buttonColorDictionary.disabled.text
       : props.textColor ?? buttonColorDictionary[props.color].text;
@@ -133,7 +132,6 @@ export const StyledButton = styled.button<{
   &:hover, &:focus {
     background-color: ${(props) => {
       if (props.color === 'transparent' && !props.disabled) {
-        console.log('props.backdropColor', props.backdropColor);
         return props.backdropColor
           ? changeHexColor(props.backdropColor, -15)
           : colorValues.lightestGray;

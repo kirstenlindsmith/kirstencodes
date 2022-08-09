@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSnackbar from '../../../../hooks/useSnackbar';
-import aact from '../../../../assets/AACT.png';
+import aact from '~/assets/AACT.png';
 import Button from '../../../Shared/Button';
 import { BackButton } from '../../../Shared/Button/CustomButtons';
 import {
