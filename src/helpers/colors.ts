@@ -13,33 +13,33 @@ export enum ColorValue {
   orange = '#f29630',
   yellow = '#fff35e',
   green = '#74a51e',
-  teal = '#46847f',
+  teal = '#00d6a8',
   lightBlue = '#77e7e5',
+  mediumBlue = '#005E7A',
   blue = '#085dfc',
-  blueGray = '#93aeb7',
   purple = '#926d8c',
   pink = '#fdb5cd',
 }
 
-export const findHexBrightness = (color: string) => {
-  let workingColor = color;
+// returns a value between 0 and 1 representing saturation of R, G, or B
+// copied from webaim's getRGB and getsRGB functions
+const getColorValue = (color: string) => {
+  const colorNumber = parseInt(color, 16) / 255;
+  const RGB =
+    colorNumber <= 0.03928
+      ? colorNumber / 12.92
+      : Math.pow((colorNumber + 0.055) / 1.055, 2.4);
+  return RGB;
+};
 
-  if (
-    workingColor === '#fff' ||
-    workingColor === '#ffff' ||
-    workingColor === 'transparent'
-  ) {
-    workingColor = ColorValue.white;
-  }
-
-  const colorVal = parseInt(workingColor.replace('#', ''), 16);
-  //tone-indifferent extractions to determine shade
-  const extractR = (colorVal >> 16) & 0xff;
-  const extractG = (colorVal >> 8) & 0xff;
-  const extractB = (colorVal >> 0) & 0xff;
-  const brightness = 0.2126 * extractR + 0.7152 * extractG + 0.0722 * extractB;
-
-  return brightness;
+// returns the perceived brightness of a hex color value
+// copied from webaim's getL function
+const getHexBrightness = (color: string) => {
+  return (
+    0.2126 * getColorValue(color.slice(1, 3)) +
+    0.7152 * getColorValue(color.slice(3, 5)) +
+    0.0722 * getColorValue(color.slice(-2))
+  );
 };
 
 export const changeHexColor = (color: string, percent: number) => {
@@ -49,10 +49,13 @@ export const changeHexColor = (color: string, percent: number) => {
 
   let workingPercent = percent;
   const colorVal = parseInt(workingColor.replace('#', ''), 16);
-  const brightness = findHexBrightness(workingColor);
+  const brightness = getHexBrightness(workingColor);
 
   //if the color is too dark to be darkened, or too light to be lightened, reverse the goal shade
-  if ((brightness < 60 && percent < 0) || (brightness > 225 && percent > 0)) {
+  if (
+    (brightness < 0.235 && percent < 0) ||
+    (brightness > 0.883 && percent > 0)
+  ) {
     workingPercent = -percent;
   }
 
@@ -82,8 +85,8 @@ export const hexAccessibilityContrast = (
 ) => {
   const bestWCAGRatio = large ? 3 / 1 : 4.5 / 1;
 
-  const aBrightness = findHexBrightness(colorA);
-  const bBrightness = findHexBrightness(colorB);
+  const aBrightness = getHexBrightness(colorA);
+  const bBrightness = getHexBrightness(colorB);
   const ratio =
     aBrightness > bBrightness
       ? aBrightness / bBrightness
@@ -92,23 +95,36 @@ export const hexAccessibilityContrast = (
   return ratio >= bestWCAGRatio;
 };
 
-export const useBlackText = (color?: string) => {
+export const useBlackText = (color?: string, large?: boolean) => {
   let workingColor = color;
 
-  if (
-    !workingColor ||
-    workingColor === '#fff' ||
-    workingColor === '#ffff' ||
-    workingColor === '#ffffff' ||
-    workingColor === 'transparent'
-  ) {
+  if (!workingColor || workingColor === 'transparent') {
     return true;
   }
 
-  const colorBrightness = findHexBrightness(workingColor ?? ColorValue.white);
-
-  return colorBrightness > 190;
+  const blackContrast = hexAccessibilityContrast(
+    workingColor,
+    ColorValue.black,
+    large
+  );
+  return blackContrast;
 };
 
 export const bestTextColor = (color?: string) =>
   useBlackText(color) ? ColorValue.black : ColorValue.white;
+
+export const accessibleContrastColor = (
+  originalColor: string,
+  currentColor?: string,
+  large?: boolean
+): string => {
+  if (!currentColor) currentColor = originalColor;
+  const shouldDarken = getHexBrightness(originalColor) >= 0.5;
+  return hexAccessibilityContrast(originalColor, currentColor, large)
+    ? currentColor
+    : accessibleContrastColor(
+        originalColor,
+        changeHexColor(currentColor, shouldDarken ? -15 : 15),
+        large
+      );
+};

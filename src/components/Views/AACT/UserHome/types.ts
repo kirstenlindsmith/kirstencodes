@@ -39,9 +39,9 @@ export type ConditionsCountDictionary = {
 };
 
 export type TopCondition = {
-  name: string;
+  label: string;
   count: number;
-  color?: ColorValue;
+  color?: string;
 };
 
 export type TopConditions = TopCondition[];

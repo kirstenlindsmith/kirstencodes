@@ -6,16 +6,18 @@ import {
   TopCondition,
   TopConditions,
 } from '../../types';
-import { ColorValue } from '../../../../../../helpers/colors';
+import {
+  ColorValue,
+  changeHexColor,
+  accessibleContrastColor,
+} from '../../../../../../helpers/colors';
 import { chartStyles } from './PieChart.style';
 
 const chartColors = [
-  ColorValue.orangeRed,
-  ColorValue.orange,
-  ColorValue.yellow,
-  ColorValue.green,
-  ColorValue.teal,
-  ColorValue.purple,
+  ColorValue.pink,
+  ColorValue.blue,
+  accessibleContrastColor(ColorValue.blue, undefined, true),
+  ColorValue.lightBlue,
 ];
 
 type Props = {
@@ -42,16 +44,15 @@ const PieChart = ({ loading, studyData }: Props) => {
     const sortedConditions: TopCondition[] = Object.keys(conditionsCount)
       .sort((first, second) => conditionsCount[second] - conditionsCount[first])
       .map((condition) => ({
-        name: condition,
+        label: condition,
         count: conditionsCount[condition],
       }));
-    const topFive = sortedConditions.slice(0, 5);
-    const topFiveTotal = topFive.reduce((sum, { count }) => sum + count, 0);
-    const otherCount =
-      Object.values(conditionsCount).reduce((sum, count) => sum + count, 0) -
-      topFiveTotal;
-    const conditionData = [...topFive, { name: 'Other', count: otherCount }];
-    return topFive.map((item, i) => ({
+    const topSix = sortedConditions.slice(0, 6);
+    const topThree = topSix.slice(0, 3);
+    const other = topSix.slice(3);
+    const otherCount = other.reduce((sum, { count }) => sum + count, 0);
+    const conditionData = [...topThree, { label: 'Other', count: otherCount }];
+    return conditionData.map((item, i) => ({
       ...item,
       color: chartColors[i],
     }));
@@ -60,31 +61,33 @@ const PieChart = ({ loading, studyData }: Props) => {
   React.useEffect(() => {
     if (document) {
       if (!loadingChart) setLoadingChart(true);
+      const labels = topConditions.reduce(
+        (labels, { label }) => [...labels, label],
+        []
+      );
+      const data = topConditions.reduce(
+        (counts, { count }) => [...counts, count],
+        []
+      );
+      const backgroundColor = topConditions.reduce(
+        (colors, { color }) => [...colors, color],
+        []
+      );
+      const borderColor = topConditions.reduce(
+        (colors, { color }) => [...colors, changeHexColor(color, -20)],
+        []
+      );
       const canvas = document.querySelector('canvas');
       const chart = new Chart(canvas, {
         type: 'pie',
         data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels,
           datasets: [
             {
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-              ],
+              label: 'Common conditions',
+              data,
+              backgroundColor,
+              borderColor,
               borderWidth: 1,
             },
           ],
@@ -98,23 +101,8 @@ const PieChart = ({ loading, studyData }: Props) => {
       (chart.canvas.parentNode as any).style.margin = '0 auto';
       (chart.canvas.parentNode as any).style.overflow = 'visible';
 
-      return () => chart.destroy();
-      // const chart = canvas.getContext('2d');
-      // const totalConditions: number = topConditions.reduce(
-      //   (sum, { count }) => sum + count,
-      //   0
-      // );
-      // let currentAngle = 0;
-      // for (let condition of topConditions) {
-      //   const portionAngle = (condition.count / totalConditions) * 2 * Math.PI;
-      //   chart.beginPath();
-      //   chart.arc(100, 100, 100, currentAngle, currentAngle + portionAngle);
-      //   currentAngle += portionAngle;
-      //   chart.lineTo(100, 100);
-      //   chart.fillStyle = condition.color;
-      //   chart.fill();
-      // }
       setLoadingChart(false);
+      return () => chart.destroy();
     }
   }, [topConditions]);
 
