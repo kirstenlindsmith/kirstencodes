@@ -1,4 +1,19 @@
-import { ColorValue, interactionColor } from '../../../helpers/colors';
+import {
+  ColorValue,
+  interactionColor,
+  hasAccessibleContrast,
+} from '../../../helpers/colors';
+
+export const useBlackText = (color?: string, large?: boolean) => {
+  if (!color || color === 'transparent') {
+    return true;
+  }
+  const blackContrast = hasAccessibleContrast(color, ColorValue.black, large);
+  return blackContrast;
+};
+
+export const bestTextColor = (color?: string) =>
+  useBlackText(color) ? ColorValue.black : ColorValue.white;
 
 export enum heightValues {
   large = 48,

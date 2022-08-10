@@ -11,12 +11,12 @@ import {
   changeHexColor,
   accessibleContrastColor,
 } from '../../../../../../helpers/colors';
-import { chartStyles } from './PieChart.style';
+import { ChartContainer, ChartTitle } from './PieChart.style';
 
 const chartColors = [
   ColorValue.pink,
   ColorValue.blue,
-  accessibleContrastColor(ColorValue.blue, true),
+  accessibleContrastColor(ColorValue.blue),
   ColorValue.lightBlue,
 ];
 
@@ -94,6 +94,15 @@ const PieChart = ({ loading, studyData }: Props) => {
         },
         options: {
           responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                usePointStyle: true,
+              },
+            },
+          },
         },
       });
       (chart.canvas.parentNode as any).style.width = '20rem';
@@ -107,9 +116,12 @@ const PieChart = ({ loading, studyData }: Props) => {
   }, [topConditions]);
 
   return (
-    <div>
-      <canvas />
-    </div>
+    <ChartContainer>
+      <ChartTitle>Common Conditions</ChartTitle>
+      <div>
+        <canvas />
+      </div>
+    </ChartContainer>
   );
 };
 

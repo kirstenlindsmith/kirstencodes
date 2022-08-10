@@ -2,8 +2,7 @@ import React from 'react';
 import {} from 'styled-components/cssprop';
 
 //helpers
-import { bestTextColor } from '../../../helpers/colors';
-import { ButtonColor, ButtonSize } from './buttonConstants';
+import { ButtonColor, ButtonSize, bestTextColor } from './helpers';
 
 //assets
 import IcSuccess from '../Icons/IcSuccess';
