@@ -1,4 +1,4 @@
-import { ColorValue, changeHexColor } from '../../../helpers/colors';
+import { ColorValue, interactionColor } from '../../../helpers/colors';
 
 export enum heightValues {
   large = 48,
@@ -31,17 +31,17 @@ export const buttonColorDictionary = {
   red: {
     text: ColorValue.white,
     background: ColorValue.orangeRed,
-    interact: changeHexColor(ColorValue.orangeRed, -15),
+    interact: interactionColor(ColorValue.orangeRed),
   },
   orange: {
     text: ColorValue.white,
     background: ColorValue.orange,
-    interact: changeHexColor(ColorValue.orange, -15),
+    interact: interactionColor(ColorValue.orange),
   },
   blue: {
     text: ColorValue.white,
     background: ColorValue.blue,
-    interact: changeHexColor(ColorValue.blue, -15),
+    interact: interactionColor(ColorValue.blue),
   },
   transparent: {
     text: ColorValue.black,

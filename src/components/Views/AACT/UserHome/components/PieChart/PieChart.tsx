@@ -16,7 +16,7 @@ import { chartStyles } from './PieChart.style';
 const chartColors = [
   ColorValue.pink,
   ColorValue.blue,
-  accessibleContrastColor(ColorValue.blue, undefined, true),
+  accessibleContrastColor(ColorValue.blue, true),
   ColorValue.lightBlue,
 ];
 

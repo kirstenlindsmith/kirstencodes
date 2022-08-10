@@ -34,7 +34,7 @@ const getColorValue = (color: string) => {
 
 // returns the perceived brightness of a hex color value
 // copied from webaim's getL function
-const getHexBrightness = (color: string) => {
+const findHexBrightness = (color: string) => {
   return (
     0.2126 * getColorValue(color.slice(1, 3)) +
     0.7152 * getColorValue(color.slice(3, 5)) +
@@ -43,24 +43,11 @@ const getHexBrightness = (color: string) => {
 };
 
 export const changeHexColor = (color: string, percent: number) => {
-  let workingColor = color;
-
-  if (workingColor === 'transparent') return ColorValue.lightestGray;
-
-  let workingPercent = percent;
-  const colorVal = parseInt(workingColor.replace('#', ''), 16);
-  const brightness = getHexBrightness(workingColor);
-
-  //if the color is too dark to be darkened, or too light to be lightened, reverse the goal shade
-  if (
-    (brightness < 0.235 && percent < 0) ||
-    (brightness > 0.883 && percent > 0)
-  ) {
-    workingPercent = -percent;
-  }
+  //parse hex format to base 16
+  const colorVal = parseInt(color.replace('#', ''), 16);
 
   //tone-preserving color conversion
-  const changeAmount = Math.round(2.55 * workingPercent); //account for 0-255 instead of 0-100 color scale
+  const changeAmount = Math.round(2.55 * percent); //account for 0-255 instead of 0-100 color scale
   const R = (colorVal >> 16) + changeAmount;
   const G = (colorVal & 0x0000ff) + changeAmount;
   const B = ((colorVal >> 8) & 0x00ff) + changeAmount;
@@ -78,15 +65,40 @@ export const changeHexColor = (color: string, percent: number) => {
   );
 };
 
-export const hexAccessibilityContrast = (
+export const interactionColor = (color: string) => {
+  if (color === 'transparent') return ColorValue.lightestGray;
+  let percent = -15;
+  const brightness = findHexBrightness(color);
+  //if the color is too dark to be darkened, or too light to be lightened, reverse the goal shade
+  if (
+    (brightness < 0.235 && percent < 0) ||
+    (brightness > 0.883 && percent > 0)
+  ) {
+    percent = -percent;
+  }
+  return changeHexColor(color, percent);
+};
+
+export const accessibleContrastColor = (color: string, large?: boolean) => {
+  const bestWCAGRatio = large ? 3 / 1 : 4.5 / 1; // per WCAG AA criteria
+  const brightness = findHexBrightness(color);
+  const targetBrightness =
+    brightness * bestWCAGRatio > 1 //if no lighter color that meets the WCAG AA standard exists...
+      ? brightness / bestWCAGRatio //then use a darker color
+      : brightness * bestWCAGRatio; //otherwise find a lighter one
+
+  const percent = Math.round(100 * (targetBrightness - brightness));
+  return changeHexColor(color, percent);
+};
+
+export const hasAccessibleContrast = (
   colorA: string,
   colorB: string,
   large?: boolean
 ) => {
   const bestWCAGRatio = large ? 3 / 1 : 4.5 / 1;
-
-  const aBrightness = getHexBrightness(colorA);
-  const bBrightness = getHexBrightness(colorB);
+  const aBrightness = findHexBrightness(colorA);
+  const bBrightness = findHexBrightness(colorB);
   const ratio =
     aBrightness > bBrightness
       ? aBrightness / bBrightness
@@ -96,35 +108,12 @@ export const hexAccessibilityContrast = (
 };
 
 export const useBlackText = (color?: string, large?: boolean) => {
-  let workingColor = color;
-
-  if (!workingColor || workingColor === 'transparent') {
+  if (!color || color === 'transparent') {
     return true;
   }
-
-  const blackContrast = hexAccessibilityContrast(
-    workingColor,
-    ColorValue.black,
-    large
-  );
+  const blackContrast = hasAccessibleContrast(color, ColorValue.black, large);
   return blackContrast;
 };
 
 export const bestTextColor = (color?: string) =>
   useBlackText(color) ? ColorValue.black : ColorValue.white;
-
-export const accessibleContrastColor = (
-  originalColor: string,
-  currentColor?: string,
-  large?: boolean
-): string => {
-  if (!currentColor) currentColor = originalColor;
-  const shouldDarken = getHexBrightness(originalColor) >= 0.5;
-  return hexAccessibilityContrast(originalColor, currentColor, large)
-    ? currentColor
-    : accessibleContrastColor(
-        originalColor,
-        changeHexColor(currentColor, shouldDarken ? -15 : 15),
-        large
-      );
-};

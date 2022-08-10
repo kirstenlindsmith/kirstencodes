@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
-import { changeHexColor, ColorValue } from '../../../helpers/colors';
+import { interactionColor, ColorValue } from '../../../helpers/colors';
 import {
   ButtonColor,
   buttonColorDictionary,
@@ -133,13 +133,13 @@ export const StyledButton = styled.button<{
     background-color: ${(props) => {
       if (props.color === 'transparent' && !props.disabled) {
         return props.backdropColor
-          ? changeHexColor(props.backdropColor, -15)
+          ? interactionColor(props.backdropColor)
           : ColorValue.lightestGray;
       }
       return props.disabled && !props.loading
         ? buttonColorDictionary.disabled.background
         : props.backgroundColor
-        ? changeHexColor(props.backgroundColor, -15)
+        ? interactionColor(props.backgroundColor)
         : buttonColorDictionary[props.color].interact;
     }};
   }
