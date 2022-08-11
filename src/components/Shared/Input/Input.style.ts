@@ -12,7 +12,7 @@ export const InputLabel = styled.label`
   font-size: 0.75rem;
 `;
 
-export const StyledInput = styled.input<{ value: string }>`
+export const StyledInput = styled.input<{ value: string; useEndIcon: boolean }>`
   width: 100%;
   box-sizing: border-box;
   border: none;
@@ -20,7 +20,8 @@ export const StyledInput = styled.input<{ value: string }>`
   border-radius: 0;
   border-bottom: 1px solid ${ColorValue.black};
   margin-bottom: 1px;
-  padding: 0.5rem 2rem 0.5rem 0.1rem;
+  padding: 0.5rem ${({ useEndIcon }) => (useEndIcon ? '3rem' : '0.1rem')} 0.5rem
+    0.1rem;
   color: ${ColorValue.black};
   background-color: transparent;
   font-weight: ${({ value }) => (value.length > 0 ? 'bold' : 'normal')};
