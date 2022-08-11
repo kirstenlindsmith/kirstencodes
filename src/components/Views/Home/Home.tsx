@@ -7,7 +7,7 @@ import {
   LogoEye,
   TearDuctLeft,
   TearDuctRight,
-  EyeLash,
+  AnimatedEyeLid,
   LogoEyeLidTop,
   LogoEyeLidBottom,
   LogoEyeBorder,
@@ -84,120 +84,8 @@ const Home = () => {
     <PinkPage>
       <LogoSection>
         <img src={logo} />
-        <LogoEyeLidTop>
-          <EyeLash
-            left
-            rotate={-75}
-            style={{
-              top: '0.8rem',
-              left: '-0.4rem',
-              height: '1.25rem',
-            }}
-          />
-          <EyeLash
-            left
-            rotate={-55}
-            style={{
-              top: '0.4rem',
-              left: '-0.2rem',
-              height: '1.25rem',
-            }}
-          />
-          <EyeLash
-            left
-            rotate={-25}
-            style={{
-              top: '-0.15rem',
-              left: '0.3rem',
-              height: '1.33rem',
-            }}
-          />
-          <EyeLash
-            left
-            rotate={-45}
-            style={{
-              top: '-0.65rem',
-              left: '0.4rem',
-              height: '1.5rem',
-            }}
-          />
-          <EyeLash
-            left
-            rotate={-25}
-            style={{
-              top: '-1.25rem',
-              left: '0.8rem',
-              height: '1.75rem',
-              width: '1rem',
-            }}
-          />
-          <EyeLash
-            left
-            rotate={-26}
-            style={{
-              top: '-1.55rem',
-              left: '1.3rem',
-              height: '1.75rem',
-              width: '1rem',
-            }}
-          />
-          <EyeLash
-            left
-            rotate={9}
-            style={{ top: '-1.8rem', left: '2.2rem', height: '1.9rem' }}
-          />
-          <EyeLash
-            left
-            rotate={-5}
-            style={{ top: '-1.99rem', left: '2.6rem' }}
-          />
-          <EyeLash
-            rotate={18}
-            style={{ top: '-1.8rem', right: '1.85rem', height: '1.89rem' }}
-          />
-          <EyeLash
-            rotate={26}
-            style={{
-              top: '-1.58rem',
-              right: '1.4rem',
-              height: '1.75rem',
-              width: '1rem',
-            }}
-          />
-          <EyeLash
-            rotate={10}
-            style={{
-              top: '-1.3rem',
-              right: '1rem',
-              height: '1.75rem',
-              width: '1rem',
-            }}
-          />
-          <EyeLash
-            rotate={45}
-            style={{
-              top: '-0.6rem',
-              right: '0.4rem',
-              height: '1.5rem',
-            }}
-          />
-          <EyeLash
-            rotate={75}
-            style={{
-              top: '-0.15rem',
-              right: '0rem',
-              height: '1.5rem',
-            }}
-          />
-          <EyeLash
-            rotate={55}
-            style={{
-              top: '0.5rem',
-              right: '-0.2rem',
-              height: '1.25rem',
-            }}
-          />
-        </LogoEyeLidTop>
+        {/* <AnimatedEyeLid /> */}
+        <LogoEyeLidTop />
         <LogoEye id='eye'>
           <TearDuctLeft />
           <LogoPupil
@@ -208,40 +96,7 @@ const Home = () => {
           />
           <TearDuctRight />
         </LogoEye>
-        <LogoEyeLidBottom>
-          <EyeLash
-            left
-            rotate={35}
-            style={{ bottom: '0', left: '0.7rem', height: '0.75rem' }}
-          />
-          <EyeLash
-            left
-            rotate={20}
-            style={{ bottom: '-0.75rem', left: '1.4rem', height: '1rem' }}
-          />
-          <EyeLash
-            left
-            rotate={24}
-            style={{ bottom: '-0.95rem', left: '1.8rem', height: '1rem' }}
-          />
-          <EyeLash
-            left
-            rotate={0}
-            style={{ bottom: '-1.15rem', left: '2.6rem', height: '1.15rem' }}
-          />
-          <EyeLash
-            rotate={-30}
-            style={{ bottom: '-0.98rem', right: '2rem', height: '1rem' }}
-          />
-          <EyeLash
-            rotate={-20}
-            style={{ bottom: '-0.85rem', right: '1.6rem', height: '1rem' }}
-          />
-          <EyeLash
-            rotate={-35}
-            style={{ bottom: '0', right: '0.7rem', height: '0.75rem' }}
-          />
-        </LogoEyeLidBottom>
+        <LogoEyeLidBottom />
         <LogoEyeBorder />
       </LogoSection>
       <Button size='large' onClick={() => navigate('/aact')}>

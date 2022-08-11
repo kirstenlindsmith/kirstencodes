@@ -37,6 +37,8 @@ export const TearDuctRight = styled(TearDuctLeft)`
   left: 2.2rem;
 `;
 
+//took these out because it felt like too much,
+//but they can be found at commit fb6fc49df505e7cf68ddd44182918a3d73a399dc
 export const EyeLash = styled.div<{ rotate: number; left?: boolean }>`
   position: absolute;
   z-index: 10001;
@@ -48,6 +50,18 @@ export const EyeLash = styled.div<{ rotate: number; left?: boolean }>`
   border-right: ${({ left }) =>
     left ? 'none' : `0.2rem solid ${ColorValue.blue}`};
   transform: rotate(${({ rotate }) => rotate}deg);
+`;
+
+export const AnimatedEyeLid = styled.div`
+  position: absolute;
+  z-index: 10001;
+  left: 31.6%;
+  top: 54%;
+  width: 5.9rem;
+  height: 9rem;
+  opacity: 0.75;
+  border-radius: 50%;
+  box-shadow: 0px -2.5rem 0px 0px ${ColorValue.mediumBlue};
 `;
 
 export const LogoEyeLidTop = styled.div`
