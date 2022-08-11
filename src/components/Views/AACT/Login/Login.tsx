@@ -71,6 +71,8 @@ const Login = () => {
           </Button>
         </form>
         <ArrowLeftButton
+          aria-label='Home'
+          onClick={() => navigate('/')}
           style={{
             top: '10.6rem',
             left: '-4rem',

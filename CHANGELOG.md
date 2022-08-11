@@ -11,11 +11,9 @@ All notable changes to the project are documented in this file.
 - ErrorBoundary view and 404 page
 - basic Icons
 - Button component, with some preconfigured buttons
-- Snackbar component, with accompanying context
-- ClickAwayListener component adapted from MUI
-- landing page
-- AACT project demo section, including fake Login and Home views
-- HamburgerMenu for AACT user home
+- Snackbar component and functionality
+- Home landing page
+- AACT project demo section, including fake Login, Logout, and Home views
 
 ### Changed
 

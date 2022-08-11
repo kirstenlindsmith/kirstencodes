@@ -5,6 +5,7 @@ import { PinkPage } from '../../Shared/Shared.style';
 import {
   LogoSection,
   LogoEye,
+  EyeLash,
   LogoEyeLidTop,
   LogoEyeLidBottom,
   LogoEyeBorder,
@@ -81,7 +82,25 @@ const Home = () => {
     <PinkPage>
       <LogoSection>
         <img src={logo} />
-        <LogoEyeLidTop />
+        <LogoEyeLidTop>
+          <EyeLash
+            rotate={-45}
+            style={{ top: 0, left: '0.75rem', height: '1rem' }}
+          />
+          <EyeLash
+            rotate={-26}
+            style={{ top: '-1.4rem', left: '1.5rem', height: '1.75rem' }}
+          />
+          <EyeLash rotate={0} style={{ top: '-2rem', left: '2.8rem' }} />
+          <EyeLash
+            rotate={26}
+            style={{ top: '-1.4rem', right: '1.5rem', height: '1.75rem' }}
+          />
+          <EyeLash
+            rotate={45}
+            style={{ top: 0, right: '0.75rem', height: '1rem' }}
+          />
+        </LogoEyeLidTop>
         <LogoEye id='eye'>
           <LogoPupil
             style={{
@@ -90,7 +109,24 @@ const Home = () => {
             }}
           />
         </LogoEye>
-        <LogoEyeLidBottom />
+        <LogoEyeLidBottom>
+          <EyeLash
+            rotate={35}
+            style={{ bottom: '-0.45rem', left: '1.25rem', height: '1rem' }}
+          />
+          <EyeLash
+            rotate={16}
+            style={{ bottom: '-1.4rem', left: '2.2rem', height: '1.5rem' }}
+          />
+          <EyeLash
+            rotate={-16}
+            style={{ bottom: '-1.4rem', right: '2.1rem', height: '1.5rem' }}
+          />
+          <EyeLash
+            rotate={-35}
+            style={{ bottom: '-0.45rem', right: '1.25rem', height: '1rem' }}
+          />
+        </LogoEyeLidBottom>
         <LogoEyeBorder />
       </LogoSection>
       <Button size='large' onClick={() => navigate('/aact')}>

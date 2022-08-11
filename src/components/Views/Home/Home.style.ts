@@ -20,6 +20,15 @@ export const LogoEye = styled.div`
   background-color: ${ColorValue.offWhite};
 `;
 
+export const EyeLash = styled.div<{ rotate: number }>`
+  position: absolute;
+  z-index: 10001;
+  height: 2rem;
+  width: 0.2rem;
+  background-color: ${ColorValue.blue};
+  transform: rotate(${({ rotate }) => rotate}deg);
+`;
+
 export const LogoEyeLidTop = styled.div`
   position: absolute;
   z-index: 1000;
