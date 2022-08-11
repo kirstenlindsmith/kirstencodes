@@ -8,6 +8,7 @@ import dog from '../../../../../../assets/dog.png';
 import paw from '../../../../../../assets/paw.png';
 import kirstenCodesSimplified from '../../../../../../assets/KirstenCodes_simplified.png';
 import { ArrowLeftButton } from '../../../../../Shared/Button/CustomButtons';
+import ClickAwayListener from '../../../../../Shared/ClickAwayListener';
 import {
   StyledHamburgerMenu,
   MenuLogo,
@@ -24,56 +25,65 @@ const HamburgerMenu = () => {
   const toggleNav = () => setOpen(!open);
 
   return (
-    <StyledHamburgerMenu role='navigation' open={open} onClick={toggleNav}>
-      <ArrowLeftButton
-        aria-label={open ? 'Close menu' : 'Open menu'}
-        onClick={toggleNav}
-        style={{
-          left: undefined,
-          right: '1.5rem',
-          top: '2rem',
-          transform: `rotate(${open ? 360 : 180}deg)`,
-        }}
-      />
-      <MenuLogo src={hamburgerMenuLogo} aria-label='Hamburger Menu' />
-      <MenuItemSection>
-        <MenuMainItem url='/'>
-          Kirsten Codes Homepage
-          <MenuItemLogo src={eye} style={{ height: '1.65rem' }} aria-label='' />
-        </MenuMainItem>
-      </MenuItemSection>
-      <MenuItemSection>
-        <MenuMainItem external url='https://clinicaltrials.gov/'>
-          Clinical Trials Homepage
-          <MenuItemLogo src={home} aria-label='' />
-        </MenuMainItem>
-        <MenuSubItem external url='https://www.clinicaltrials.gov/api/gui/home'>
-          AACT API Docs
-          <MenuItemLogo src={book} aria-label='' />
-        </MenuSubItem>
-      </MenuItemSection>
-      <MenuItemSection>
-        <MenuMainItem
-          external
-          url='https://www.kaggle.com/datasets/crawford/cat-dataset'
-        >
-          Pictures of cats
-          <MenuItemLogo src={cat} aria-label='' />
-        </MenuMainItem>
-        <MenuMainItem external url='https://dog.ceo/dog-api/'>
-          Pictures of puppies
-          <MenuItemLogo src={dog} aria-label='' />
-        </MenuMainItem>
-        <MenuMainItem
-          external
-          url='https://www.kaggle.com/datasets/alessiocorrado99/animals10'
-        >
-          Pictures of animals
-          <MenuItemLogo src={paw} aria-label='' />
-        </MenuMainItem>
-      </MenuItemSection>
-      <KirstenLogo src={kirstenCodesSimplified} />
-    </StyledHamburgerMenu>
+    <ClickAwayListener onClickAway={() => setOpen(false)}>
+      <StyledHamburgerMenu role='navigation' open={open} onClick={toggleNav}>
+        <ArrowLeftButton
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={toggleNav}
+          style={{
+            left: undefined,
+            right: '1.5rem',
+            top: '2rem',
+            transform: `rotate(${open ? 360 : 180}deg)`,
+          }}
+        />
+        <MenuLogo src={hamburgerMenuLogo} aria-label='Hamburger Menu' />
+        <MenuItemSection>
+          <MenuMainItem url='/'>
+            Kirsten Codes Homepage
+            <MenuItemLogo
+              src={eye}
+              style={{ height: '1.65rem' }}
+              aria-label=''
+            />
+          </MenuMainItem>
+        </MenuItemSection>
+        <MenuItemSection>
+          <MenuMainItem external url='https://clinicaltrials.gov/'>
+            Clinical Trials Homepage
+            <MenuItemLogo src={home} aria-label='' />
+          </MenuMainItem>
+          <MenuSubItem
+            external
+            url='https://www.clinicaltrials.gov/api/gui/home'
+          >
+            AACT API Docs
+            <MenuItemLogo src={book} aria-label='' />
+          </MenuSubItem>
+        </MenuItemSection>
+        <MenuItemSection>
+          <MenuMainItem
+            external
+            url='https://www.kaggle.com/datasets/crawford/cat-dataset'
+          >
+            Pictures of cats
+            <MenuItemLogo src={cat} aria-label='' />
+          </MenuMainItem>
+          <MenuMainItem external url='https://dog.ceo/dog-api/'>
+            Pictures of puppies
+            <MenuItemLogo src={dog} aria-label='' />
+          </MenuMainItem>
+          <MenuMainItem
+            external
+            url='https://www.kaggle.com/datasets/alessiocorrado99/animals10'
+          >
+            Pictures of animals
+            <MenuItemLogo src={paw} aria-label='' />
+          </MenuMainItem>
+        </MenuItemSection>
+        <KirstenLogo src={kirstenCodesSimplified} />
+      </StyledHamburgerMenu>
+    </ClickAwayListener>
   );
 };
 
