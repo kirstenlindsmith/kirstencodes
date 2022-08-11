@@ -20,12 +20,33 @@ export const LogoEye = styled.div`
   background-color: ${ColorValue.offWhite};
 `;
 
-export const EyeLash = styled.div<{ rotate: number }>`
+export const TearDuctLeft = styled.div`
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  top: 0.5rem;
+  width: 3rem;
+  height: 6rem;
+  border-radius: 50%;
+  border-left: 0.4rem solid ${ColorValue.blue};
+`;
+
+export const TearDuctRight = styled(TearDuctLeft)`
+  border-left: none;
+  border-right: 0.4rem solid ${ColorValue.blue};
+  left: 2.2rem;
+`;
+
+export const EyeLash = styled.div<{ rotate: number; left?: boolean }>`
   position: absolute;
   z-index: 10001;
   height: 2rem;
-  width: 0.2rem;
-  background-color: ${ColorValue.blue};
+  width: 0.75rem;
+  border-radius: 50%;
+  border-left: ${({ left }) =>
+    left ? `0.2rem solid ${ColorValue.blue}` : 'none'};
+  border-right: ${({ left }) =>
+    left ? 'none' : `0.2rem solid ${ColorValue.blue}`};
   transform: rotate(${({ rotate }) => rotate}deg);
 `;
 
@@ -42,6 +63,7 @@ export const LogoEyeLidTop = styled.div`
 `;
 
 export const LogoEyeLidBottom = styled(LogoEyeLidTop)`
+  z-index: 900;
   top: auto;
   bottom: 31%;
   box-shadow: 0px 2.5rem 0px 0px ${ColorValue.lightBlue};
