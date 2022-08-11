@@ -26,10 +26,10 @@ const Footer = () => (
           Built by Kirsten Lindsmith
         </FooterSignatureSection>
         <FooterSignatureSection>| kelindsmith@gmail.com</FooterSignatureSection>
-        <FooterSignatureSection>| ©2022</FooterSignatureSection>
+        <FooterSignatureSection>| © 2022</FooterSignatureSection>
       </FooterSignature>
-      <img src={AACTwhite} aria-label='AACT' />
     </FooterContent>
+    <img src={AACTwhite} aria-label='AACT' />
   </StyledFooter>
 );
 
