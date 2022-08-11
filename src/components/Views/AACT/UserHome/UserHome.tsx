@@ -20,6 +20,7 @@ const UserHome = () => {
   const isMobile = useMobile();
   const snackbar = useSnackbar();
   const [loading, setLoading] = React.useState(true);
+  const [rawData, setRawData] = React.useState<Study[]>([]);
   const [studyData, setStudyData] = React.useState<Study[]>([]);
   const [searchText, setSearchText] = React.useState('');
   const debouncedSearchText = useDebounce(searchText, 500);
@@ -31,6 +32,7 @@ const UserHome = () => {
       if (!loading) setLoading(true);
       const rawResponse = await fetch(endpoint);
       const { StudyFieldsResponse }: ApiResponse = await rawResponse.json();
+      setRawData(StudyFieldsResponse.StudyFields);
       setStudyData(StudyFieldsResponse.StudyFields);
       setLoading(false);
     } catch (error) {
@@ -47,21 +49,24 @@ const UserHome = () => {
     []
   );
   React.useEffect(() => {
-    const filteredData = studyData.filter(
-      ({ NCTId, BriefTitle, Condition, LastUpdateSubmitDate }) =>
-        NCTId.some((item) =>
-          lowercase(item).includes(lowercase(debouncedSearchText))
-        ) ||
-        BriefTitle.some((item) =>
-          lowercase(item).includes(lowercase(debouncedSearchText))
-        ) ||
-        Condition.some((item) =>
-          lowercase(item).includes(lowercase(debouncedSearchText))
-        ) ||
-        LastUpdateSubmitDate.some((item) =>
-          lowercase(item).includes(lowercase(debouncedSearchText))
-        )
-    );
+    const filteredData =
+      debouncedSearchText.length > 0
+        ? rawData.filter(
+            ({ NCTId, BriefTitle, Condition, LastUpdateSubmitDate }) =>
+              NCTId.some((item) =>
+                lowercase(item).includes(lowercase(debouncedSearchText))
+              ) ||
+              BriefTitle.some((item) =>
+                lowercase(item).includes(lowercase(debouncedSearchText))
+              ) ||
+              Condition.some((item) =>
+                lowercase(item).includes(lowercase(debouncedSearchText))
+              ) ||
+              LastUpdateSubmitDate.some((item) =>
+                lowercase(item).includes(lowercase(debouncedSearchText))
+              )
+          )
+        : rawData;
     setStudyData(filteredData);
   }, [debouncedSearchText]);
 
