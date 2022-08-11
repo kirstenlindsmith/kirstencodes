@@ -1,3 +1,1 @@
-import UserHome from './UserHome';
-
-export default UserHome;
+export { default } from './UserHome';

@@ -5,14 +5,9 @@ import useAACTUser from '../../../../hooks/useAACTUser';
 import useMobile from '../../../../hooks/useMobile';
 import aact from '../../../../assets/AACT.png';
 import Button from '../../../Shared/Button';
+import Input from '../../../Shared/Input';
 import { ArrowLeftButton } from '../../../Shared/Button/CustomButtons';
-import {
-  LoginPage,
-  FormSection,
-  InputWrapper,
-  InputLabel,
-  Input,
-} from './Login.style';
+import { LoginPage, FormSection } from './Login.style';
 
 const Login = () => {
   const isMobile = useMobile();
@@ -43,26 +38,20 @@ const Login = () => {
         <img src={aact} aria-label='AACT' />
         <form onSubmit={handleSubmit}>
           <h1>Log In</h1>
-          <InputWrapper style={{ marginBottom: '1rem' }}>
-            <InputLabel htmlFor='name'>Name</InputLabel>
-            <Input
-              type='text'
-              name='name'
-              value={username}
-              placeholder='What is your name?'
-              onChange={(e) => setUsername(e.currentTarget.value)}
-            />
-          </InputWrapper>
-          <InputWrapper>
-            <InputLabel htmlFor='password'>Password</InputLabel>
-            <Input
-              type='password'
-              name='password'
-              value={password}
-              placeholder='Tell me a secret'
-              onChange={(e) => setPassword(e.currentTarget.value)}
-            />
-          </InputWrapper>
+          <Input
+            name='name'
+            value={username}
+            setValue={setUsername}
+            placeholder='What is your name?'
+            wrapperStyle={{ marginBottom: '1rem' }}
+          />
+          <Input
+            name='password'
+            type='password'
+            value={password}
+            setValue={setPassword}
+            placeholder='Tell me a secret'
+          />
           <Button
             type='submit'
             color='blue'

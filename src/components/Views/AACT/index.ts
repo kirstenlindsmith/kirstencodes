@@ -1,3 +1,1 @@
-import AACT from './AACT';
-
-export default AACT;
+export { default } from './AACT';

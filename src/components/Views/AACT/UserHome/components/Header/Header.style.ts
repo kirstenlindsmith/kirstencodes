@@ -7,6 +7,7 @@ export const StyledHeader = styled.header`
   width: 100%;
   height: 5.5rem;
   padding: 1rem;
+  margin-bottom: 4rem;
   border-radius: 0.5rem;
   img {
     height: 5rem;

@@ -1,3 +1,1 @@
-import StudyTable from './StudyTable';
-
-export default StudyTable;
+export { default } from './StudyTable';
