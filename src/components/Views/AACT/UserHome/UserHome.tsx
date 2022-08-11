@@ -5,6 +5,7 @@ import useSnackbar from '../../../../hooks/useSnackbar';
 import HamburgerMenu from './components/HamburgerMenu';
 import StudyTable from './components/StudyTable';
 import PieChart from './components/PieChart';
+import Footer from './components/Footer';
 import {
   UserHomePage,
   MainContainer,
@@ -12,7 +13,6 @@ import {
   PageBody,
   BodyCard,
   tableCardStyles,
-  Footer,
 } from './UserHome.style';
 
 const UserHome = () => {
@@ -59,7 +59,7 @@ const UserHome = () => {
           </BodyCard>
         </PageBody>
       </MainContainer>
-      <Footer>Footer</Footer>
+      <Footer />
     </UserHomePage>
   );
 };

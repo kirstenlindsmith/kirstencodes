@@ -13,7 +13,7 @@ export enum ColorValue {
   orange = '#f29630',
   yellow = '#fff35e',
   green = '#74a51e',
-  teal = '#00d6a8',
+  teal = '#12a7a3',
   lightBlue = '#77e7e5',
   mediumBlue = '#20d0ff',
   blue = '#085dfc',
