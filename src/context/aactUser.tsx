@@ -7,19 +7,19 @@ export const AACTUserContext = React.createContext<{
 
 export const AACTUserProvider = ({
   children,
+  username,
+  setUsername,
 }: {
   children: React.ReactNode;
-}) => {
-  const [username, setUsername] = React.useState<string>('');
-
-  return (
-    <AACTUserContext.Provider
-      value={{
-        username,
-        setUsername,
-      }}
-    >
-      {children}
-    </AACTUserContext.Provider>
-  );
-};
+  username: string;
+  setUsername: (username: string) => void;
+}) => (
+  <AACTUserContext.Provider
+    value={{
+      username,
+      setUsername,
+    }}
+  >
+    {children}
+  </AACTUserContext.Provider>
+);

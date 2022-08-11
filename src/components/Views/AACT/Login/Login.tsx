@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSnackbar from '../../../../hooks/useSnackbar';
+import useAACTUser from '../../../../hooks/useAACTUser';
 import aact from '../../../../assets/AACT.png';
 import Button from '../../../Shared/Button';
 import { ArrowLeftButton } from '../../../Shared/Button/CustomButtons';
@@ -15,6 +16,7 @@ import {
 const Login = () => {
   const navigate = useNavigate();
   const snackbar = useSnackbar();
+  const user = useAACTUser();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -27,7 +29,8 @@ const Login = () => {
     } else if (!password) {
       snackbar.setErrorMessage('Please enter your password.');
     } else {
-      snackbar.setSuccessMessage(`Hi ${username}!`);
+      user.setUsername(username);
+      snackbar.setSuccessMessage(`Welcome, ${username} :)`);
       navigate('/aact/home');
     }
   };

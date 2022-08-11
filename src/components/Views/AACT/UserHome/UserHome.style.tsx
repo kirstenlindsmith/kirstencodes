@@ -16,20 +16,6 @@ export const MainContainer = styled.div`
   padding: 1.5rem 1.5rem 1.5rem 6.5rem;
 `;
 
-export const Header = styled.header`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 5.5rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  img {
-    height: 5rem;
-    object-fit: contain;
-    margin-right: 1rem;
-  }
-`;
-
 export const PageBody = styled.div`
   display: flex;
   justify-content: space-between;

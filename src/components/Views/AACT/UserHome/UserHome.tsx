@@ -1,15 +1,14 @@
 import React from 'react';
-import aact from '../../../../assets/AACT.png';
 import { Study, ApiResponse } from './types';
 import useSnackbar from '../../../../hooks/useSnackbar';
 import HamburgerMenu from './components/HamburgerMenu';
+import Header from './components/Header';
 import StudyTable from './components/StudyTable';
 import PieChart from './components/PieChart';
 import Footer from './components/Footer';
 import {
   UserHomePage,
   MainContainer,
-  Header,
   PageBody,
   BodyCard,
   tableCardStyles,
@@ -46,10 +45,7 @@ const UserHome = () => {
     <UserHomePage>
       <HamburgerMenu />
       <MainContainer>
-        <Header>
-          <img src={aact} aria-label='AACT' />
-          <h1>Study Data</h1>
-        </Header>
+        <Header />
         <PageBody>
           <BodyCard style={tableCardStyles}>
             <StudyTable loading={loading} studyData={studyData} />

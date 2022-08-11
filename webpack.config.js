@@ -34,7 +34,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.css', '.png'],
+    extensions: ['.tsx', '.ts', '.js', '.css', '.png', '.gif'],
   },
   devServer: {
     historyApiFallback: true,

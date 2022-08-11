@@ -41,3 +41,9 @@ a:hover,
 a:focus {
   text-decoration-style: dotted;
 }
+
+.loading {
+  height: 6rem;
+  width: 6rem;
+  margin: 0 auto;
+}

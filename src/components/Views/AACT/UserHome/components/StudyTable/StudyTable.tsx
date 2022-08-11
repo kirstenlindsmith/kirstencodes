@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowLeftButton } from '../../../../../Shared/Button/CustomButtons';
 import { ColumnName, Study, DateSort } from '../../types';
+import { ArrowLeftButton } from '../../../../../Shared/Button/CustomButtons';
+import LoadingAnimation from '../../../../../Shared/LoadingAnimation';
 import {
   Container,
   Table,
@@ -46,7 +47,7 @@ const ConditionsTable = ({ loading, studyData }: Props) => {
   return (
     <Container>
       {loading ? (
-        'Loading...'
+        <LoadingAnimation />
       ) : (
         <Table>
           <TableHeader>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Chart from 'chart.js/auto';
+import ChartJS from 'chart.js/auto';
 import {
   Study,
   ConditionsCountDictionary,
@@ -11,7 +11,8 @@ import {
   changeHexColor,
   accessibleContrastColor,
 } from '../../../../../../helpers/colors';
-import { ChartContainer, ChartTitle } from './PieChart.style';
+import LoadingAnimation from '../../../../../Shared/LoadingAnimation';
+import { ChartContainer, ChartTitle, Chart } from './PieChart.style';
 
 const chartColors = [
   ColorValue.pink,
@@ -26,8 +27,6 @@ type Props = {
 };
 
 const PieChart = ({ loading, studyData }: Props) => {
-  const [loadingChart, setLoadingChart] = React.useState(true);
-
   const conditionsCount: ConditionsCountDictionary = React.useMemo(() => {
     const countDictionary: ConditionsCountDictionary = {};
     studyData.forEach((study) => {
@@ -60,7 +59,6 @@ const PieChart = ({ loading, studyData }: Props) => {
 
   React.useEffect(() => {
     if (document) {
-      if (!loadingChart) setLoadingChart(true);
       const labels = topConditions.reduce(
         (labels, { label }) => [...labels, label],
         []
@@ -78,7 +76,7 @@ const PieChart = ({ loading, studyData }: Props) => {
         []
       );
       const canvas = document.querySelector('canvas');
-      const chart = new Chart(canvas, {
+      const chart = new ChartJS(canvas, {
         type: 'pie',
         data: {
           labels,
@@ -109,8 +107,6 @@ const PieChart = ({ loading, studyData }: Props) => {
       (chart.canvas.parentNode as any).style.height = '20rem';
       (chart.canvas.parentNode as any).style.margin = '0 auto';
       (chart.canvas.parentNode as any).style.overflow = 'visible';
-
-      setLoadingChart(false);
       return () => chart.destroy();
     }
   }, [topConditions]);
@@ -118,9 +114,10 @@ const PieChart = ({ loading, studyData }: Props) => {
   return (
     <ChartContainer>
       <ChartTitle>Common Conditions</ChartTitle>
-      <div>
+      {loading ? <LoadingAnimation /> : null}
+      <Chart hide={loading}>
         <canvas />
-      </div>
+      </Chart>
     </ChartContainer>
   );
 };
