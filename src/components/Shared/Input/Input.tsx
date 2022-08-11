@@ -1,11 +1,19 @@
 import React from 'react';
-import { InputWrapper, InputLabel, StyledInput } from './Input.style';
+import {
+  InputWrapper,
+  InputLabel,
+  StyledInput,
+  StartIcon,
+  EndIcon,
+} from './Input.style';
 
 type Props = {
   value: string;
   setValue: (newValue: string) => void;
   name: string;
   label?: string;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
   wrapperStyle?: React.CSSProperties;
 } & React.ComponentPropsWithoutRef<'input'>;
 
@@ -14,6 +22,8 @@ const Input = ({
   label,
   value,
   setValue,
+  startIcon,
+  endIcon,
   wrapperStyle,
   ...rest
 }: Props) => (
@@ -21,6 +31,7 @@ const Input = ({
     {(label?.length ?? 0) > 0 ? (
       <InputLabel htmlFor='name'>{label}</InputLabel>
     ) : null}
+    {startIcon ? <StartIcon>{startIcon}</StartIcon> : null}
     <StyledInput
       type='text'
       name='name'
@@ -28,6 +39,7 @@ const Input = ({
       onChange={(e) => setValue(e.currentTarget.value)}
       {...rest}
     />
+    {endIcon ? <EndIcon>{endIcon}</EndIcon> : null}
   </InputWrapper>
 );
 

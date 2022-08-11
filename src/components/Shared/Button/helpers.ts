@@ -19,18 +19,28 @@ export enum heightValues {
   large = '3rem',
   medium = '2.25rem',
   small = '1.75rem',
+  tiny = '1.75rem',
+}
+
+export enum minWidthValues {
+  large = '4rem',
+  medium = '4rem',
+  small = '4rem',
+  tiny = 0,
 }
 
 export enum fontSizeValues {
   large = '1.125rem',
   medium = '1rem',
   small = '0.875rem',
+  tiny = '0.875rem',
 }
 
 export enum paddingValues {
   large = '0.5rem 1.375rem',
   medium = '0.375rem 1rem',
   small = '0.25rem 0.625rem',
+  tiny = 0,
 }
 
 export type ButtonColor =
@@ -40,7 +50,7 @@ export type ButtonColor =
   | 'transparent'
   | 'disabled';
 
-export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonSize = 'tiny' | 'small' | 'medium' | 'large';
 
 export const buttonColorDictionary = {
   red: {

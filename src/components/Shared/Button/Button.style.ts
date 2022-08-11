@@ -1,10 +1,12 @@
 import styled, { keyframes, css } from 'styled-components';
 import { interactionColor, ColorValue } from '../../../helpers/colors';
 import {
+  ButtonSize,
   ButtonColor,
   buttonColorDictionary,
   fontSizeValues,
   heightValues,
+  minWidthValues,
   paddingValues,
 } from './helpers';
 
@@ -67,7 +69,7 @@ const defaultButtonStyle = {
   padding: paddingValues.medium,
   fontSize: fontSizeValues.medium,
   borderRadius: '0.25rem',
-  minWidth: '4rem',
+  minWidth: minWidthValues.medium,
   lineHeight: 1.75,
   letterSpacing: '0.02857rem',
   textTransform: 'uppercase' as any,
@@ -84,7 +86,7 @@ const defaultButtonStyle = {
 
 type ButtonBuildingProps = {
   color?: ButtonColor;
-  size?: 'small' | 'medium' | 'large';
+  size?: ButtonSize;
   fullWidth?: boolean;
   overrideStyle?: React.CSSProperties;
 };
@@ -103,6 +105,7 @@ export const buildButtonStyle: ({
   const style = defaultButtonStyle;
   style.fontSize = fontSizeValues[size];
   style.height = heightValues[size];
+  style.minWidth = minWidthValues[size];
   style.padding = paddingValues[size];
   style.width = fullWidth ? '100%' : 'auto';
   style.cursor = color === 'disabled' ? 'default' : 'pointer';

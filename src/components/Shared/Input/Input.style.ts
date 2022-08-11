@@ -30,3 +30,17 @@ export const StyledInput = styled.input<{ value: string }>`
     margin-bottom: 0;
   }
 `;
+
+export const StartIcon = styled.div`
+  position: absolute;
+  left: -1rem;
+`;
+
+export const EndIcon = styled.div`
+  position: absolute;
+  right: 1rem;
+  img {
+    height: 1.5rem;
+    width: auto !important;
+  }
+`;

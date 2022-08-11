@@ -4,6 +4,8 @@ import useSnackbar from '../../../../hooks/useSnackbar';
 import useAACTUser from '../../../../hooks/useAACTUser';
 import useMobile from '../../../../hooks/useMobile';
 import aact from '../../../../assets/AACT.png';
+import openEye from '../../../../assets/openEye.png';
+import closedEye from '../../../../assets/closedEye.png';
 import Button from '../../../Shared/Button';
 import Input from '../../../Shared/Input';
 import { ArrowLeftButton } from '../../../Shared/Button/CustomButtons';
@@ -16,6 +18,7 @@ const Login = () => {
   const user = useAACTUser();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [showPassword, setShowPassword] = React.useState(false);
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,10 +50,20 @@ const Login = () => {
           />
           <Input
             name='password'
-            type='password'
+            type={showPassword ? 'text' : 'password'}
             value={password}
             setValue={setPassword}
             placeholder='Tell me a secret'
+            endIcon={
+              <Button
+                size='tiny'
+                color='transparent'
+                aria-label={showPassword ? 'hide password' : 'show password'}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <img src={showPassword ? closedEye : openEye} />
+              </Button>
+            }
           />
           <Button
             type='submit'
@@ -66,7 +79,7 @@ const Login = () => {
           onClick={() => navigate('/')}
           style={{
             top: isMobile ? '10%' : '10.6rem',
-            left: isMobile ? 0 : '-4rem',
+            left: isMobile ? 0 : '-3rem',
           }}
         />
       </FormSection>
