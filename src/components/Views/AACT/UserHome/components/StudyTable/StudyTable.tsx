@@ -3,6 +3,7 @@ import { ColumnName, Study, DateSort } from '../../types';
 import useMobile from '../../../../../../hooks/useMobile';
 import { ArrowLeftButton } from '../../../../../Shared/Button/CustomButtons';
 import LoadingAnimation from '../../../../../Shared/LoadingAnimation';
+import { NoResults } from '../../../../../Shared/Shared.style';
 import {
   Container,
   Table,
@@ -56,10 +57,21 @@ const ConditionsTable = ({ loading, studyData }: Props) => {
     },
   ];
 
+  const noData = studyData.length < 1;
+  const hideTable = loading || noData;
+
+  const LoadingOrBlank = (): JSX.Element | null => {
+    if (loading) {
+      return <LoadingAnimation />;
+    } else if (noData) {
+      return <NoResults>No results</NoResults>;
+    } else return null;
+  };
+
   return (
     <Container>
-      {loading ? (
-        <LoadingAnimation />
+      {hideTable ? (
+        <LoadingOrBlank />
       ) : (
         <Table>
           <TableHeader>

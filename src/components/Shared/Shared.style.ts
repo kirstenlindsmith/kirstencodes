@@ -32,3 +32,14 @@ export const StackedButtons = styled.div`
     margin-bottom: 1rem;
   }
 `;
+
+export const NoResults = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: ${ColorValue.blue};
+`;

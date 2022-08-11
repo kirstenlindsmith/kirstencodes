@@ -13,6 +13,7 @@ import {
   accessibleContrastColor,
 } from '../../../../../../helpers/colors';
 import LoadingAnimation from '../../../../../Shared/LoadingAnimation';
+import { NoResults } from '../../../../../Shared/Shared.style';
 import { ChartContainer, ChartTitle, Chart } from './PieChart.style';
 
 const chartColors = [
@@ -29,6 +30,17 @@ type Props = {
 
 const PieChart = ({ loading, studyData }: Props) => {
   const isMobile = useMobile();
+  const noData = studyData.length < 1;
+  const hideTable = loading || noData;
+
+  const LoadingOrBlank = (): JSX.Element | null => {
+    if (loading) {
+      return <LoadingAnimation />;
+    } else if (noData) {
+      return <NoResults>No results</NoResults>;
+    } else return null;
+  };
+
   const conditionsCount: ConditionsCountDictionary = React.useMemo(() => {
     const countDictionary: ConditionsCountDictionary = {};
     studyData.forEach((study) => {
@@ -52,7 +64,9 @@ const PieChart = ({ loading, studyData }: Props) => {
     const topThree = topSix.slice(0, 3);
     const other = topSix.slice(3);
     const otherCount = other.reduce((sum, { count }) => sum + count, 0);
-    const conditionData = [...topThree, { label: 'Other', count: otherCount }];
+    const conditionData = noData
+      ? []
+      : [...topThree, { label: 'Other', count: otherCount }];
     return conditionData.map((item, i) => ({
       ...item,
       color: chartColors[i],
@@ -106,6 +120,9 @@ const PieChart = ({ loading, studyData }: Props) => {
           },
         },
       });
+      (chart.canvas.parentNode as any).style.display = noData
+        ? 'none'
+        : 'block';
       (chart.canvas.parentNode as any).style.width = isMobile ? '50%' : '20rem';
       (chart.canvas.parentNode as any).style.height = isMobile
         ? 'auto'
@@ -119,7 +136,7 @@ const PieChart = ({ loading, studyData }: Props) => {
   return (
     <ChartContainer>
       <ChartTitle>Common Conditions</ChartTitle>
-      {loading ? <LoadingAnimation /> : null}
+      {hideTable ? <LoadingOrBlank /> : null}
       <Chart hide={loading}>
         <canvas />
       </Chart>
