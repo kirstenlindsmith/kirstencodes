@@ -6,6 +6,7 @@ import {
   FooterContent,
   FooterList,
   FooterSignature,
+  FooterSignatureSection,
 } from './Footer.style';
 
 const Footer = () => (
@@ -21,7 +22,11 @@ const Footer = () => (
         </Link>
       </FooterList>
       <FooterSignature>
-        Built by Kirsten Lindsmith | kelindsmith@gmail.com | ©2022
+        <FooterSignatureSection>
+          Built by Kirsten Lindsmith
+        </FooterSignatureSection>
+        <FooterSignatureSection>| kelindsmith@gmail.com</FooterSignatureSection>
+        <FooterSignatureSection>| ©2022</FooterSignatureSection>
       </FooterSignature>
       <img src={AACTwhite} aria-label='AACT' />
     </FooterContent>

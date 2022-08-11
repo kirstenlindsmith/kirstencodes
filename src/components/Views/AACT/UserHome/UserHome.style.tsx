@@ -12,9 +12,9 @@ export const UserHomePage = styled.div`
 
 export const MainContainer = styled.div`
   height: calc(100% - 10rem);
-  margin-bottom: 1.5rem;
   padding: 1.5rem 1.5rem 1.5rem 6.5rem;
   @media (max-width: 900px) {
+    height: 100%;
     padding: 1.5rem;
   }
 `;

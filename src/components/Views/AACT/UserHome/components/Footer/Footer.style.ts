@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import { ColorValue } from '../../../../../../helpers/colors';
 
 export const StyledFooter = styled.footer`
-  position: absolute;
-  bottom: 0;
-  display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
@@ -13,6 +11,8 @@ export const StyledFooter = styled.footer`
   color: ${ColorValue.white};
   background-color: ${ColorValue.teal};
   @media (max-width: 900px) {
+    max-height: 20%;
+    padding: 1rem;
     img {
       display: none;
     }
@@ -22,7 +22,7 @@ export const StyledFooter = styled.footer`
 export const FooterContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: max-content;
+  width: 100%;
   img {
     position: absolute;
     right: 0;
@@ -41,6 +41,14 @@ export const FooterList = styled.div`
 export const FooterSignature = styled.div`
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   width: 100%;
   font-weight: normal;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+`;
+
+export const FooterSignatureSection = styled.div`
+  display: flex;
 `;
