@@ -26,7 +26,6 @@ const Footer = () => (
           Built by Kirsten Lindsmith
         </FooterSignatureSection>
         <FooterSignatureSection>| kelindsmith@gmail.com</FooterSignatureSection>
-        <FooterSignatureSection>| © 2022</FooterSignatureSection>
       </FooterSignature>
     </FooterContent>
     <img src={AACTwhite} aria-label='AACT' />
