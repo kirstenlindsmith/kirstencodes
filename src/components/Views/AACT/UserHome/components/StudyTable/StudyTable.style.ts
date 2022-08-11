@@ -31,6 +31,10 @@ export const TableCell = styled.td`
   overflow: scroll;
   padding: 0.5rem;
   font-size: 0.875rem;
+  @media (max-width: 900px) {
+    padding: 5px;
+    max-width: 2rem;
+  }
 `;
 
 export const dateSortStyle = (

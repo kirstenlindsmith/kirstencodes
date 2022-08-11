@@ -6,6 +6,7 @@ export const PinkPage = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
+  width: 100%;
   background-color: ${ColorValue.pink};
   padding: 1.5rem;
 `;

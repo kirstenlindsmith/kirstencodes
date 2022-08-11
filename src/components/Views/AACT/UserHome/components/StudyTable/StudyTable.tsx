@@ -1,5 +1,6 @@
 import React from 'react';
 import { ColumnName, Study, DateSort } from '../../types';
+import useMobile from '../../../../../../hooks/useMobile';
 import { ArrowLeftButton } from '../../../../../Shared/Button/CustomButtons';
 import LoadingAnimation from '../../../../../Shared/LoadingAnimation';
 import {
@@ -10,27 +11,13 @@ import {
   dateSortStyle,
 } from './StudyTable.style';
 
-const tableColumns: {
-  name: ColumnName;
-  label: string;
-  style?: React.CSSProperties;
-}[] = [
-  { name: 'NCTId' as ColumnName, label: 'NCT ID', style: { width: '6.83rem' } },
-  { name: 'BriefTitle' as ColumnName, label: 'Study Title' },
-  { name: 'Condition' as ColumnName, label: 'Conditions' },
-  {
-    name: 'LastUpdateSubmitDate' as ColumnName,
-    label: 'Last Update',
-    style: { width: '8.5rem', textAlign: 'center', paddingLeft: '1.1rem' },
-  },
-];
-
 type Props = {
   loading: boolean;
   studyData: Study[];
 };
 
 const ConditionsTable = ({ loading, studyData }: Props) => {
+  const isMobile = useMobile();
   const [dateSort, setDateSort] = React.useState<DateSort>(DateSort.descending);
   const descendingDate = React.useMemo(
     () => dateSort === DateSort.descending,
@@ -43,6 +30,31 @@ const ConditionsTable = ({ loading, studyData }: Props) => {
       const secondDate = new Date(second.LastUpdateSubmitDate[0]).getTime();
       return descendingDate ? secondDate - firstDate : firstDate - secondDate;
     });
+
+  const tableColumns: {
+    name: ColumnName;
+    label: string;
+    style?: React.CSSProperties;
+  }[] = [
+    {
+      name: 'NCTId' as ColumnName,
+      label: 'NCT ID',
+      style: isMobile ? {} : { width: '6.83rem' },
+    },
+    { name: 'BriefTitle' as ColumnName, label: 'Study Title' },
+    { name: 'Condition' as ColumnName, label: 'Conditions' },
+    {
+      name: 'LastUpdateSubmitDate' as ColumnName,
+      label: 'Last Update',
+      style: isMobile
+        ? {}
+        : {
+            width: '8.5rem',
+            textAlign: 'center',
+            paddingLeft: '1.1rem',
+          },
+    },
+  ];
 
   return (
     <Container>

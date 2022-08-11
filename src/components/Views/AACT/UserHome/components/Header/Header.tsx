@@ -6,6 +6,7 @@ import {
   StyledHeader,
   TitleSection,
   UserSection,
+  UserGreeting,
   UserDivider,
 } from './Header.style';
 
@@ -18,7 +19,9 @@ const Header = () => {
         <h1>Study Data</h1>
       </TitleSection>
       <UserSection>
-        Hi {user.username}!<UserDivider>|</UserDivider>
+        <UserGreeting>
+          Hi {user.username}!<UserDivider>|</UserDivider>
+        </UserGreeting>
         <Link url='/aact/logout'>Logout</Link>
       </UserSection>
     </StyledHeader>

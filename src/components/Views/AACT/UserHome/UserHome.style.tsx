@@ -14,6 +14,9 @@ export const MainContainer = styled.div`
   height: calc(100% - 10rem);
   margin-bottom: 1.5rem;
   padding: 1.5rem 1.5rem 1.5rem 6.5rem;
+  @media (max-width: 900px) {
+    padding: 1.5rem;
+  }
 `;
 
 export const PageBody = styled.div`
@@ -22,6 +25,9 @@ export const PageBody = styled.div`
   width: 100%;
   height: calc(100% - 5.5rem);
   margin: 1.5rem 0;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 
 export const BodyCard = styled.div`
@@ -32,10 +38,3 @@ export const BodyCard = styled.div`
   border-radius: 0.5rem;
   background-color: ${ColorValue.white};
 `;
-
-export const tableCardStyles: React.CSSProperties = {
-  width: '50rem',
-  marginRight: '1.5rem',
-  paddingRight: '0.25rem',
-  paddingBottom: '1.5rem',
-};

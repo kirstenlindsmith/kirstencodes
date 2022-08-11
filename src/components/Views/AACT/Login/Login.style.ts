@@ -24,6 +24,9 @@ export const FormSection = styled.div`
   img {
     width: 5.5rem;
   }
+  @media (max-width: 900px) {
+    width: 50%;
+  }
 `;
 
 export const InputWrapper = styled.div`

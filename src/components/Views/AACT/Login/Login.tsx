@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSnackbar from '../../../../hooks/useSnackbar';
 import useAACTUser from '../../../../hooks/useAACTUser';
+import useMobile from '../../../../hooks/useMobile';
 import aact from '../../../../assets/AACT.png';
 import Button from '../../../Shared/Button';
 import { ArrowLeftButton } from '../../../Shared/Button/CustomButtons';
@@ -14,6 +15,7 @@ import {
 } from './Login.style';
 
 const Login = () => {
+  const isMobile = useMobile();
   const navigate = useNavigate();
   const snackbar = useSnackbar();
   const user = useAACTUser();
@@ -74,8 +76,8 @@ const Login = () => {
           aria-label='Home'
           onClick={() => navigate('/')}
           style={{
-            top: '10.6rem',
-            left: '-4rem',
+            top: isMobile ? '10%' : '10.6rem',
+            left: isMobile ? 0 : '-4rem',
           }}
         />
       </FormSection>

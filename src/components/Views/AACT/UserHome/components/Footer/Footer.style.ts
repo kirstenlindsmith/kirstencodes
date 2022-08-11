@@ -12,6 +12,11 @@ export const StyledFooter = styled.footer`
   font-weight: bold;
   color: ${ColorValue.white};
   background-color: ${ColorValue.teal};
+  @media (max-width: 900px) {
+    img {
+      display: none;
+    }
+  }
 `;
 
 export const FooterContent = styled.div`

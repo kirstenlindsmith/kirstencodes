@@ -1,13 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../Shared/Button';
-import { PinkPage } from '../../Shared/Shared.style';
 import {
+  HomePage,
   LogoSection,
+  EyeballSection,
+  MobileEyeReplacement,
   LogoEye,
   TearDuctLeft,
   TearDuctRight,
-  AnimatedEyeLid,
   LogoEyeLidTop,
   LogoEyeLidBottom,
   LogoEyeBorder,
@@ -81,28 +82,31 @@ const Home = () => {
   }, []);
 
   return (
-    <PinkPage>
+    <HomePage>
       <LogoSection>
         <img src={logo} />
-        {/* <AnimatedEyeLid /> */}
-        <LogoEyeLidTop />
-        <LogoEye id='eye'>
-          <TearDuctLeft />
-          <LogoPupil
-            style={{
-              left: eyeX,
-              top: eyeY,
-            }}
-          />
-          <TearDuctRight />
-        </LogoEye>
-        <LogoEyeLidBottom />
-        <LogoEyeBorder />
+        <MobileEyeReplacement />
+        <EyeballSection id='eyeball'>
+          {/* <AnimatedEyeLid /> */}
+          <LogoEyeLidTop />
+          <LogoEye id='eye'>
+            <TearDuctLeft />
+            <LogoPupil
+              style={{
+                left: eyeX,
+                top: eyeY,
+              }}
+            />
+            <TearDuctRight />
+          </LogoEye>
+          <LogoEyeLidBottom />
+          <LogoEyeBorder />
+        </EyeballSection>
       </LogoSection>
       <Button size='large' onClick={() => navigate('/aact')}>
         ENTER
       </Button>
-    </PinkPage>
+    </HomePage>
   );
 };
 

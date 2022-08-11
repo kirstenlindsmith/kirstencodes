@@ -1,5 +1,6 @@
 import React from 'react';
 import ChartJS from 'chart.js/auto';
+import useMobile from '../../../../../../hooks/useMobile';
 import {
   Study,
   ConditionsCountDictionary,
@@ -27,6 +28,7 @@ type Props = {
 };
 
 const PieChart = ({ loading, studyData }: Props) => {
+  const isMobile = useMobile();
   const conditionsCount: ConditionsCountDictionary = React.useMemo(() => {
     const countDictionary: ConditionsCountDictionary = {};
     studyData.forEach((study) => {
@@ -60,7 +62,7 @@ const PieChart = ({ loading, studyData }: Props) => {
   React.useEffect(() => {
     if (document) {
       const labels = topConditions.reduce(
-        (labels, { label }) => [...labels, label],
+        (labels, { label, count }) => [...labels, `${label} (${count})`],
         []
       );
       const data = topConditions.reduce(
@@ -103,13 +105,15 @@ const PieChart = ({ loading, studyData }: Props) => {
           },
         },
       });
-      (chart.canvas.parentNode as any).style.width = '20rem';
-      (chart.canvas.parentNode as any).style.height = '20rem';
-      (chart.canvas.parentNode as any).style.margin = '0 auto';
+      (chart.canvas.parentNode as any).style.width = isMobile ? '50%' : '20rem';
+      (chart.canvas.parentNode as any).style.height = isMobile
+        ? 'auto'
+        : '20rem';
+      (chart.canvas.parentNode as any).style.margin = 'auto';
       (chart.canvas.parentNode as any).style.overflow = 'visible';
       return () => chart.destroy();
     }
-  }, [topConditions]);
+  }, [topConditions, isMobile]);
 
   return (
     <ChartContainer>

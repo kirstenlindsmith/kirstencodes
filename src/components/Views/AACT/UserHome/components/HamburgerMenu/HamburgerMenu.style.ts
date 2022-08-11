@@ -43,6 +43,9 @@ export const StyledHamburgerMenu = styled.div<{ open: boolean }>`
   img {
     object-fit: contain;
   }
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 export const MenuLogo = styled.img`

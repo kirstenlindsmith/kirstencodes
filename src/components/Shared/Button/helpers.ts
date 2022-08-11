@@ -16,21 +16,21 @@ export const bestTextColor = (color?: string) =>
   useBlackText(color) ? ColorValue.black : ColorValue.white;
 
 export enum heightValues {
-  large = 48,
-  medium = 36,
-  small = 28,
+  large = '3rem',
+  medium = '2.25rem',
+  small = '1.75rem',
 }
 
 export enum fontSizeValues {
-  large = 16,
-  medium = 14,
-  small = 12,
+  large = '1.125rem',
+  medium = '1rem',
+  small = '0.875rem',
 }
 
 export enum paddingValues {
-  large = '8px 22px',
-  medium = '6px 16px',
-  small = '4px 10px',
+  large = '0.5rem 1.375rem',
+  medium = '0.375rem 1rem',
+  small = '0.25rem 0.625rem',
 }
 
 export type ButtonColor =

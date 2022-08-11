@@ -14,6 +14,7 @@ All notable changes to the project are documented in this file.
 - Snackbar component and functionality
 - Home landing page
 - AACT project demo section, including fake Login, Logout, and Home views
+- responsive styling
 
 ### Changed
 
