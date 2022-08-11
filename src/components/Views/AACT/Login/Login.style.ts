@@ -45,6 +45,7 @@ export const Input = styled.input<{ value?: string }>`
   box-sizing: border-box;
   border: none;
   outline: none;
+  border-radius: 0;
   border-bottom: 1px solid ${ColorValue.black};
   margin-bottom: 1px;
   padding: 0.5rem 2rem 0.5rem 0.1rem;
